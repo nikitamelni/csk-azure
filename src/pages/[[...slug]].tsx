@@ -1,5 +1,11 @@
-import { createUniformApiEnhancer, RootComponentInstance } from '@uniformdev/canvas';
-import { prependLocale, withUniformGetServerSideProps } from '@uniformdev/canvas-next/route';
+import {
+  CANVAS_DRAFT_STATE,
+  CANVAS_PUBLISHED_STATE,
+  createUniformApiEnhancer,
+  RootComponentInstance,
+  RouteClient,
+} from '@uniformdev/canvas';
+import { withUniformGetStaticProps } from '@uniformdev/canvas-next/route';
 import { UniformComposition } from '@uniformdev/canvas-react';
 import { BreadcrumbsContextProvider } from '@uniformdev/csk-components/components/canvas';
 import {
@@ -8,10 +14,19 @@ import {
 } from '@uniformdev/design-extensions-tools/components/providers/server';
 import { getTokenConfiguration } from '@uniformdev/design-extensions-tools/getTokenConfiguration';
 import { componentResolver } from '@/components';
-import { getBreadcrumbs, buildPath } from '@/utils/canvas/canvasClients';
+import { getBreadcrumbs, buildPath, getProjectMapClient } from '@/utils/canvas/canvasClients';
+import { getContentClient } from '@/utils/contentClient';
 
-export const getServerSideProps = withUniformGetServerSideProps({
-  modifyPath: prependLocale,
+export const getStaticProps = withUniformGetStaticProps({
+  modifyPath: (path: string) => {
+    return '/en' + path;
+  },
+  client: new RouteClient({
+    apiKey: process.env.UNIFORM_API_KEY,
+    projectId: process.env.UNIFORM_PROJECT_ID,
+    disableSWR: true,
+  }),
+  param: 'slug',
   handleComposition: async (routeResponse, _context) => {
     const { composition, errors } = routeResponse.compositionApiResponse || {};
 
@@ -31,6 +46,43 @@ export const getServerSideProps = withUniformGetServerSideProps({
     };
   },
 });
+
+export const getStaticPaths = async () => {
+  const { nodes } = await getProjectMapClient().getNodes({
+    state: process.env.NODE_ENV === 'development' ? CANVAS_DRAFT_STATE : CANVAS_PUBLISHED_STATE,
+  });
+
+  const paths =
+    nodes?.reduce((acc: string[], { path, type }) => (type === 'composition' ? [...acc, path] : acc), []) || [];
+  // explicitly using EN locale, but more can be added if needed
+  const pathsWithLocale = paths.map(path => path.replace(':locale', 'en'));
+
+  // replacing the dynamic locaiton details with the actual location details
+  // getting all possible location to pre-render them. location are stored in Uniform as entries
+
+  const contentClient = getContentClient();
+
+  const locationsResponse = await contentClient.getEntries({
+    filters: {
+      type: { eq: 'location' },
+    },
+    limit: 20,
+  });
+
+  const locations = (locationsResponse?.entries?.map(entry => entry?.entry?._slug) || []) as string[];
+
+  const pathsWithLocationDetails = pathsWithLocale.flatMap(path => {
+    if (path.includes(':location')) {
+      return locations.map((location: string) => path.replace(':location', location));
+    }
+    return path;
+  });
+
+  return {
+    paths: pathsWithLocationDetails,
+    fallback: 'blocking',
+  };
+};
 
 type PageProps = {
   data: RootComponentInstance;
