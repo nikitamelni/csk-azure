@@ -1,6 +1,6 @@
-import { AssetParamValue } from '@uniformdev/assets';
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { ViewPort } from '@/types/cskTypes';
+import { AssetParamValue } from "@uniformdev/assets";
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { ViewPort } from "@/types/cskTypes";
 
 export type VideoParameters = {
   video?: AssetParamValue;
@@ -17,4 +17,4 @@ export type VideoParameters = {
 
 export type VideoProps = ComponentProps<VideoParameters>;
 
-export { default } from './video';
+export { default } from "./video";

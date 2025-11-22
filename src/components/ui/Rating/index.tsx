@@ -5,4 +5,4 @@ export type RatingProps = {
   activeStarsColor?: string;
 };
 
-export { Rating as default } from './rating';
+export { Rating as default } from "./rating";

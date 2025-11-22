@@ -1,8 +1,8 @@
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { ViewPort } from '@/types/cskTypes';
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { ViewPort } from "@/types/cskTypes";
 
-type AvailableAlignSelf = 'auto' | 'start' | 'end' | 'center' | 'stretch';
-type AvailableShrink = '0' | '1';
+type AvailableAlignSelf = "auto" | "start" | "end" | "center" | "stretch";
+type AvailableShrink = "0" | "1";
 
 export type FlexItemParameters = {
   displayName?: string;
@@ -11,9 +11,9 @@ export type FlexItemParameters = {
 };
 
 export enum FlexItemSlots {
-  Inner = 'inner',
+  Inner = "inner",
 }
 
 export type FlexItemProps = ComponentProps<FlexItemParameters>;
 
-export { default } from './flex-item';
+export { default } from "./flex-item";

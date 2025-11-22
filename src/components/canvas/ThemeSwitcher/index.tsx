@@ -1,4 +1,4 @@
-import { ComponentProps } from '@uniformdev/canvas-react';
+import { ComponentProps } from "@uniformdev/canvas-react";
 
 export type ThemeSwitcherParameters = {
   iconColor?: string;
@@ -6,4 +6,4 @@ export type ThemeSwitcherParameters = {
 
 export type ThemeSwitcherProps = ComponentProps<ThemeSwitcherParameters>;
 
-export { default } from './theme-switcher';
+export { default } from "./theme-switcher";

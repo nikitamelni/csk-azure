@@ -1,16 +1,22 @@
-import { CanvasClient, RootComponentInstance } from '@uniformdev/canvas';
-import { flattenValues } from '@uniformdev/canvas';
-import { resolveRouteToPath } from '@uniformdev/csk-components/utils/routing';
-import { ProjectMapClient } from '@uniformdev/project-map';
+import { CanvasClient, RootComponentInstance } from "@uniformdev/canvas";
+import { flattenValues } from "@uniformdev/canvas";
+import { resolveRouteToPath } from "@uniformdev/csk-components/utils/routing";
+import { ProjectMapClient } from "@uniformdev/project-map";
 
 export const getProjectMapClient = () => {
   const apiKey = process.env.UNIFORM_API_KEY;
-  const apiHost = process.env.UNIFORM_CLI_BASE_URL || 'https://uniform.app';
+  const apiHost = process.env.UNIFORM_CLI_BASE_URL || "https://uniform.app";
   const projectId = process.env.UNIFORM_PROJECT_ID;
 
-  if (!apiHost) throw new Error('apiHost is not specified. Project Map client cannot be instantiated');
+  if (!apiHost)
+    throw new Error(
+      "apiHost is not specified. Project Map client cannot be instantiated",
+    );
 
-  if (!projectId) throw new Error('projectId is not specified. Project Map client cannot be instantiated');
+  if (!projectId)
+    throw new Error(
+      "projectId is not specified. Project Map client cannot be instantiated",
+    );
 
   return new ProjectMapClient({
     apiKey,
@@ -19,7 +25,10 @@ export const getProjectMapClient = () => {
   });
 };
 
-export const buildPath = (matchedRoute: string, dynamicInputs: Record<string, string | number> | undefined): string => {
+export const buildPath = (
+  matchedRoute: string,
+  dynamicInputs: Record<string, string | number> | undefined,
+): string => {
   let path = matchedRoute;
   for (const [key, value] of Object.entries(dynamicInputs ?? {})) {
     path = path.replace(`:${key}`, String(value));
@@ -27,12 +36,17 @@ export const buildPath = (matchedRoute: string, dynamicInputs: Record<string, st
   return path;
 };
 
-export const hasAutoGenerateTrue = (data: RootComponentInstance, type: string, param: string) => {
+export const hasAutoGenerateTrue = (
+  data: RootComponentInstance,
+  type: string,
+  param: string,
+) => {
   const seen = new WeakSet();
   let result = false;
 
   (function walk(node) {
-    if (result || node == null || typeof node !== 'object' || seen.has(node)) return;
+    if (result || node == null || typeof node !== "object" || seen.has(node))
+      return;
     seen.add(node);
     if (node.type === type) {
       const value = node.parameters?.[param]?.value ?? node.parameters?.[param];
@@ -57,8 +71,15 @@ export const hasAutoGenerateTrue = (data: RootComponentInstance, type: string, p
   return result;
 };
 
-export const getBreadcrumbs = async (composition: RootComponentInstance, path: string) => {
-  if (composition.type !== 'page' || !hasAutoGenerateTrue(composition, 'breadcrumbs', 'autoGenerate')) return [];
+export const getBreadcrumbs = async (
+  composition: RootComponentInstance,
+  path: string,
+) => {
+  if (
+    composition.type !== "page" ||
+    !hasAutoGenerateTrue(composition, "breadcrumbs", "autoGenerate")
+  )
+    return [];
   const client = getProjectMapClient();
 
   const { projectMapNodes } = composition;
@@ -73,8 +94,8 @@ export const getBreadcrumbs = async (composition: RootComponentInstance, path: s
   if (!nodes?.length) return [];
 
   return Promise.all(
-    nodes.map(async node => {
-      const isDynamic = node.pathSegment?.includes(':');
+    nodes.map(async (node) => {
+      const isDynamic = node.pathSegment?.includes(":");
 
       const title =
         isDynamic && node.compositionId
@@ -91,9 +112,12 @@ export const getBreadcrumbs = async (composition: RootComponentInstance, path: s
               .catch(() => node.name)
           : node.name;
 
-      const link = node.type === 'placeholder' ? null : resolveRouteToPath(node.path, path);
+      const link =
+        node.type === "placeholder"
+          ? null
+          : resolveRouteToPath(node.path, path);
 
       return { title, link };
-    })
+    }),
   );
 };

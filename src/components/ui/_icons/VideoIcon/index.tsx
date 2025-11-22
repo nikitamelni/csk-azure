@@ -1,14 +1,17 @@
-import { FC, SVGProps } from 'react';
-import { cn } from '@/utils/styling';
+import { FC, SVGProps } from "react";
+import { cn } from "@/utils/styling";
 
-const VideoIcon: FC<SVGProps<SVGSVGElement>> = ({ className, ...restProps }) => (
+const VideoIcon: FC<SVGProps<SVGSVGElement>> = ({
+  className,
+  ...restProps
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={cn('size-6', className)}
+    className={cn("size-6", className)}
     {...restProps}
   >
     <path

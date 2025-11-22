@@ -1,6 +1,14 @@
-import { SpaceType, ViewPort } from '@/types/cskTypes';
+import { SpaceType, ViewPort } from "@/types/cskTypes";
 
-type HeightType = 'full' | 'screen' | 'svh' | 'lvh' | 'dvh' | 'min' | 'max' | 'fit';
+type HeightType =
+  | "full"
+  | "screen"
+  | "svh"
+  | "lvh"
+  | "dvh"
+  | "min"
+  | "max"
+  | "fit";
 
 export type ContainerParameters = {
   displayName?: string;

@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import BaseContainer from '@/components/ui/Container';
-import { cn, resolveViewPort } from '@/utils/styling';
-import { FlexProps } from '.';
+import { FC } from "react";
+import BaseContainer from "@/components/ui/Container";
+import { cn, resolveViewPort } from "@/utils/styling";
+import { FlexProps } from ".";
 
 export const Flex: FC<FlexProps> = ({
   className,
@@ -18,19 +18,28 @@ export const Flex: FC<FlexProps> = ({
   children,
   wrap,
 }) => (
-  <BaseContainer {...{ backgroundColor, spacing, border, fluidContent, height, wrapperClassName }}>
+  <BaseContainer
+    {...{
+      backgroundColor,
+      spacing,
+      border,
+      fluidContent,
+      height,
+      wrapperClassName,
+    }}
+  >
     <div
       className={cn(
-        'flex',
+        "flex",
         {
-          [resolveViewPort(direction, 'flex-{value}')]: direction,
-          [resolveViewPort(justifyContent, 'justify-{value}')]: justifyContent,
-          [resolveViewPort(gap, 'gap-{value}')]: gap,
-          [resolveViewPort(alignItems, 'items-{value}')]: alignItems,
-          [resolveViewPort(height, 'h-{value}')]: height,
-          [resolveViewPort(wrap, 'flex-{value}')]: wrap,
+          [resolveViewPort(direction, "flex-{value}")]: direction,
+          [resolveViewPort(justifyContent, "justify-{value}")]: justifyContent,
+          [resolveViewPort(gap, "gap-{value}")]: gap,
+          [resolveViewPort(alignItems, "items-{value}")]: alignItems,
+          [resolveViewPort(height, "h-{value}")]: height,
+          [resolveViewPort(wrap, "flex-{value}")]: wrap,
         },
-        className
+        className,
       )}
     >
       {children}

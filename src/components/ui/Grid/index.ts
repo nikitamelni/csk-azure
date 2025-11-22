@@ -1,11 +1,17 @@
-import { ContainerProps as BaseContainerProps } from '@/components/ui/Container';
-import { ViewPort } from '@/types/cskTypes';
+import { ContainerProps as BaseContainerProps } from "@/components/ui/Container";
+import { ViewPort } from "@/types/cskTypes";
 
-type Align = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
+type Align = "start" | "end" | "center" | "baseline" | "stretch";
 
 export type GridProps = Pick<
   BaseContainerProps,
-  'title' | 'backgroundColor' | 'spacing' | 'border' | 'fluidContent' | 'children' | 'height'
+  | "title"
+  | "backgroundColor"
+  | "spacing"
+  | "border"
+  | "fluidContent"
+  | "children"
+  | "height"
 > & {
   columnsCount?: string | ViewPort<string>;
   gapY?: string | ViewPort<string>;
@@ -14,4 +20,4 @@ export type GridProps = Pick<
   className?: string;
 };
 
-export { Grid as default } from './grid';
+export { Grid as default } from "./grid";

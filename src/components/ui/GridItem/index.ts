@@ -1,7 +1,7 @@
-import { HTMLAttributes } from 'react';
-import { ViewPort } from '@/types/cskTypes';
+import { HTMLAttributes } from "react";
+import { ViewPort } from "@/types/cskTypes";
 
-type Align = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
+type Align = "start" | "end" | "center" | "baseline" | "stretch";
 
 export type GridItemProps = HTMLAttributes<HTMLDivElement> & {
   columnStart?: string | ViewPort<string>;
@@ -12,4 +12,4 @@ export type GridItemProps = HTMLAttributes<HTMLDivElement> & {
   alignSelf?: Align | ViewPort<Align>;
 };
 
-export { GridItem as default } from './grid-item';
+export { GridItem as default } from "./grid-item";

@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react';
-import { SpaceType, ViewPort } from '@/types/cskTypes';
+import { HTMLAttributes } from "react";
+import { SpaceType, ViewPort } from "@/types/cskTypes";
 
 export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
   backgroundColor?: string;
@@ -11,4 +11,4 @@ export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
   maxWidth?: string;
 };
 
-export { Container as default } from './container';
+export { Container as default } from "./container";

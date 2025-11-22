@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { UniformSlot } from '@uniformdev/canvas-react';
-import BaseCarousel from '@/components/ui/Carousel';
-import { CarouselProps, CarouselSlots } from '.';
+import { FC } from "react";
+import { UniformSlot } from "@uniformdev/canvas-react";
+import BaseCarousel from "@/components/ui/Carousel";
+import { CarouselProps, CarouselSlots } from ".";
 
 const Carousel: FC<CarouselProps> = ({
   backgroundColor,
@@ -14,7 +14,15 @@ const Carousel: FC<CarouselProps> = ({
   component,
 }) => (
   <BaseCarousel
-    {...{ backgroundColor, spacing, border, fluidContent, height, itemsPerPage, gapX }}
+    {...{
+      backgroundColor,
+      spacing,
+      border,
+      fluidContent,
+      height,
+      itemsPerPage,
+      gapX,
+    }}
     countOfItems={component?.slots?.[CarouselSlots.Items]?.length ?? 0}
     variant={component.variant}
   >

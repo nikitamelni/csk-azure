@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from "react";
 
 export type PageProps = HTMLAttributes<HTMLDivElement> & {
   header?: ReactNode;
@@ -6,4 +6,4 @@ export type PageProps = HTMLAttributes<HTMLDivElement> & {
   backgroundColor?: string;
 };
 
-export { Page as default } from './page';
+export { Page as default } from "./page";

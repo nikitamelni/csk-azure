@@ -1,11 +1,11 @@
-import { ComponentMapping } from '@uniformdev/csk-components/utils/createComponentResolver';
-import Button from './Button';
-import ColumnsSection from './ColumnsSection';
-import Container from './Container';
-import CustomComponent from './CustomComponent';
-import Header from './Header/header';
-import Map from './Map';
-import SectionAligner from './SectionAligner';
+import { ComponentMapping } from "@uniformdev/csk-components/utils/createComponentResolver";
+import Button from "./Button";
+import ColumnsSection from "./ColumnsSection";
+import Container from "./Container";
+import CustomComponent from "./CustomComponent";
+import Header from "./Header/header";
+import Map from "./Map";
+import SectionAligner from "./SectionAligner";
 
 // Here, you can add your own component or customize an existing CSK component with your logic or styles.
 export const customComponentsMapping: ComponentMapping = {

@@ -1,7 +1,7 @@
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import BaseContainer from '@/components/ui/Container';
-import { cn, resolveViewPort } from '@/utils/styling';
-import { CarouselProps, CarouselVariant } from '.';
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import BaseContainer from "@/components/ui/Container";
+import { cn, resolveViewPort } from "@/utils/styling";
+import { CarouselProps, CarouselVariant } from ".";
 
 export const Carousel: FC<CarouselProps> = ({
   countOfItems,
@@ -10,7 +10,7 @@ export const Carousel: FC<CarouselProps> = ({
   border,
   fluidContent,
   height,
-  itemsPerPage = '1',
+  itemsPerPage = "1",
   children,
   gapX,
   variant = CarouselVariant.DEFAULT,
@@ -23,13 +23,15 @@ export const Carousel: FC<CarouselProps> = ({
 
   const totalCountOfItems = useMemo(() => {
     if (!countOfItems) return 0;
-    return itemsPerPageNumber > 1 ? Math.ceil(countOfItems / itemsPerPageNumber) : countOfItems;
+    return itemsPerPageNumber > 1
+      ? Math.ceil(countOfItems / itemsPerPageNumber)
+      : countOfItems;
   }, [countOfItems, itemsPerPageNumber]);
 
   useEffect(() => {
-    const handleResize = () => setRecheckSlider(prev => !prev);
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
+    const handleResize = () => setRecheckSlider((prev) => !prev);
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -40,17 +42,19 @@ export const Carousel: FC<CarouselProps> = ({
   }, [currentIndex, recheckSlider]);
 
   const goToPrevious = useCallback(() => {
-    setCurrentIndex(prev => (prev === 0 ? totalCountOfItems - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? totalCountOfItems - 1 : prev - 1));
   }, [totalCountOfItems]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex(prev => (prev === totalCountOfItems - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === totalCountOfItems - 1 ? 0 : prev + 1));
   }, [totalCountOfItems]);
 
   const renderPagination = () => {
     if (variant === CarouselVariant.BROCHURE) {
       return (
-        <div className={cn('flex py-4 px-4 z-5 gap-x-4 justify-end items-center')}>
+        <div
+          className={cn("flex py-4 px-4 z-5 gap-x-4 justify-end items-center")}
+        >
           <button onClick={goToPrevious}>❮</button>
 
           <div className="flex items-center gap-2">
@@ -58,11 +62,14 @@ export const Carousel: FC<CarouselProps> = ({
               <button
                 key={`slide-${index}`}
                 onClick={() => setCurrentIndex(index)}
-                className={cn('h-2 rounded-full transition-all duration-300 size-2 opacity-50', {
-                  'w-6 opacity-100': index === currentIndex,
-                  [`bg-${backgroundColor} invert`]: !!backgroundColor,
-                  'bg-black dark:bg-white': !backgroundColor,
-                })}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300 size-2 opacity-50",
+                  {
+                    "w-6 opacity-100": index === currentIndex,
+                    [`bg-${backgroundColor} invert`]: !!backgroundColor,
+                    "bg-black dark:bg-white": !backgroundColor,
+                  },
+                )}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -76,9 +83,9 @@ export const Carousel: FC<CarouselProps> = ({
     if (variant === CarouselVariant.NUMERIC) {
       return (
         <div
-          className={cn('flex py-4 px-4 z-5 gap-x-4 justify-end items-center', {
+          className={cn("flex py-4 px-4 z-5 gap-x-4 justify-end items-center", {
             [`text-${backgroundColor} invert`]: !!backgroundColor,
-            'text-black dark:text-white': !backgroundColor,
+            "text-black dark:text-white": !backgroundColor,
           })}
         >
           <button onClick={goToPrevious}>❮</button>
@@ -92,10 +99,13 @@ export const Carousel: FC<CarouselProps> = ({
 
     return (
       <div
-        className={cn('absolute inset-x-5 top-1/2 flex -translate-y-1/2 justify-between', {
-          [`text-${backgroundColor} invert`]: !!backgroundColor,
-          'text-black dark:text-white': !backgroundColor,
-        })}
+        className={cn(
+          "absolute inset-x-5 top-1/2 flex -translate-y-1/2 justify-between",
+          {
+            [`text-${backgroundColor} invert`]: !!backgroundColor,
+            "text-black dark:text-white": !backgroundColor,
+          },
+        )}
       >
         <button onClick={goToPrevious}>❮</button>
         <button onClick={goToNext}>❯</button>
@@ -105,22 +115,30 @@ export const Carousel: FC<CarouselProps> = ({
 
   const renderSlides = () =>
     children({
-      className: cn('flex size-full items-center justify-center', {
-        [resolveViewPort(gapX, 'px-{value}')]: gapX,
+      className: cn("flex size-full items-center justify-center", {
+        [resolveViewPort(gapX, "px-{value}")]: gapX,
       }),
       style: {
-        minWidth: itemsPerPageNumber > 1 ? `calc(${100 / itemsPerPageNumber}%)` : '100%',
+        minWidth:
+          itemsPerPageNumber > 1
+            ? `calc(${100 / itemsPerPageNumber}%)`
+            : "100%",
       },
     });
 
   return (
-    <BaseContainer {...{ backgroundColor, spacing, border, fluidContent, height }}>
+    <BaseContainer
+      {...{ backgroundColor, spacing, border, fluidContent, height }}
+    >
       <div
-        className={cn('relative', {
-          [resolveViewPort(gapX, '-mx-{value}')]: gapX,
+        className={cn("relative", {
+          [resolveViewPort(gapX, "-mx-{value}")]: gapX,
         })}
       >
-        <div ref={containerRef} className="flex overflow-x-hidden scroll-smooth">
+        <div
+          ref={containerRef}
+          className="flex overflow-x-hidden scroll-smooth"
+        >
           {renderSlides()}
         </div>
         {renderPagination()}

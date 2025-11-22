@@ -1,8 +1,8 @@
 export enum CountdownUnit {
-  Days = 'days',
-  Hours = 'hours',
-  Minutes = 'minutes',
-  Seconds = 'seconds',
+  Days = "days",
+  Hours = "hours",
+  Minutes = "minutes",
+  Seconds = "seconds",
 }
 
 export const MILLISECONDS_IN_SECOND = 1000;

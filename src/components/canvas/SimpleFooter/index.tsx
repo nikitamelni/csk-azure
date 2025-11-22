@@ -1,5 +1,10 @@
-import { AssetParamValue, DataWithProperties, LinkParamValue, RichTextParamValue } from '@uniformdev/canvas';
-import { ComponentProps } from '@uniformdev/canvas-react';
+import {
+  AssetParamValue,
+  DataWithProperties,
+  LinkParamValue,
+  RichTextParamValue,
+} from "@uniformdev/canvas";
+import { ComponentProps } from "@uniformdev/canvas-react";
 
 export type SimpleFooterParameters = {
   logo?: AssetParamValue;
@@ -15,4 +20,4 @@ export type FooterLink = {
 
 export type SimpleFooterProps = ComponentProps<SimpleFooterParameters>;
 
-export { default } from './simple-footer';
+export { default } from "./simple-footer";

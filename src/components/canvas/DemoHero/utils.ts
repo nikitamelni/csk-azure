@@ -3,18 +3,24 @@ export type PrefixedKeys<T, Prefix extends string> = {
 };
 
 export type RemovePrefix<T, Prefix extends string> = {
-  [Key in keyof T as Key extends `${Prefix}${infer Rest}` ? Uncapitalize<Rest> : Key]: T[Key];
+  [Key in keyof T as Key extends `${Prefix}${infer Rest}`
+    ? Uncapitalize<Rest>
+    : Key]: T[Key];
 };
 
-export const cleanUpPrefix = <T extends Record<string, unknown>, Prefix extends string>(
+export const cleanUpPrefix = <
+  T extends Record<string, unknown>,
+  Prefix extends string,
+>(
   obj: T,
-  prefix: Prefix
+  prefix: Prefix,
 ): RemovePrefix<T, Prefix> => {
   return Object.entries(obj).reduce(
     (result, [key, value]) => {
       if (key.startsWith(prefix)) {
-        const cleanedKey = (key.slice(prefix.length) as string).replace(/^./, char =>
-          char.toLowerCase()
+        const cleanedKey = (key.slice(prefix.length) as string).replace(
+          /^./,
+          (char) => char.toLowerCase(),
         ) as keyof RemovePrefix<T, Prefix>;
         return {
           ...result,
@@ -26,7 +32,7 @@ export const cleanUpPrefix = <T extends Record<string, unknown>, Prefix extends 
         [key]: value as T[keyof T],
       };
     },
-    {} as RemovePrefix<T, Prefix>
+    {} as RemovePrefix<T, Prefix>,
   );
 };
 

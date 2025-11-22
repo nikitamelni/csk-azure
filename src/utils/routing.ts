@@ -1,5 +1,9 @@
-import { NextRouter } from 'next/router';
-import { ResolvedRouteGetResponse, RouteGetResponseEdgehancedComposition, LinkParamValue } from '@uniformdev/canvas';
+import { NextRouter } from "next/router";
+import {
+  ResolvedRouteGetResponse,
+  RouteGetResponseEdgehancedComposition,
+  LinkParamValue,
+} from "@uniformdev/canvas";
 
 /**
  * Replaces dynamic segments in an unresolved path template (with `:tokens`)
@@ -23,9 +27,12 @@ import { ResolvedRouteGetResponse, RouteGetResponseEdgehancedComposition, LinkPa
  * resolveRouteToPath("/:locale/static", "/en/test");
  * // Returns: undefined
  */
-export const resolveRouteToPath = (unresolved: string, resolved: string): string | undefined => {
-  const unresolvedParts = unresolved.split('/').filter(Boolean);
-  const resolvedParts = resolved.split('/').filter(Boolean);
+export const resolveRouteToPath = (
+  unresolved: string,
+  resolved: string,
+): string | undefined => {
+  const unresolvedParts = unresolved.split("/").filter(Boolean);
+  const resolvedParts = resolved.split("/").filter(Boolean);
 
   if (resolvedParts.length < unresolvedParts.length) {
     return undefined;
@@ -41,7 +48,7 @@ export const resolveRouteToPath = (unresolved: string, resolved: string): string
       const currentResolved = resolvedParts[acc.index];
       if (!currentResolved) return { ...acc, valid: false };
 
-      if (part.startsWith(':')) {
+      if (part.startsWith(":")) {
         return {
           ...acc,
           result: [...acc.result, currentResolved],
@@ -59,10 +66,10 @@ export const resolveRouteToPath = (unresolved: string, resolved: string): string
 
       return { ...acc, valid: false };
     },
-    { valid: true, result: [], index: 0 }
+    { valid: true, result: [], index: 0 },
   );
 
-  return valid ? '/' + result.join('/') : undefined;
+  return valid ? "/" + result.join("/") : undefined;
 };
 
 /**
@@ -71,8 +78,12 @@ export const resolveRouteToPath = (unresolved: string, resolved: string): string
  * @param {ResolvedRouteGetResponse} route - The route response to check.
  * @returns {boolean} - True if the route contains a valid composition, otherwise false.
  */
-export const isRouteWithoutErrors = (route: ResolvedRouteGetResponse): route is RouteGetResponseEdgehancedComposition =>
-  'compositionApiResponse' in route && !!route.compositionApiResponse && 'composition' in route.compositionApiResponse;
+export const isRouteWithoutErrors = (
+  route: ResolvedRouteGetResponse,
+): route is RouteGetResponseEdgehancedComposition =>
+  "compositionApiResponse" in route &&
+  !!route.compositionApiResponse &&
+  "composition" in route.compositionApiResponse;
 
 /**
  * Formats a Uniform link into a URL or mailto link based on its type.
@@ -81,9 +92,9 @@ export const isRouteWithoutErrors = (route: ResolvedRouteGetResponse): route is 
  * @returns {string} - The formatted link as a string.
  */
 export const formatUniformLink = (uniformLink?: LinkParamValue): string => {
-  if (!uniformLink) return '';
+  if (!uniformLink) return "";
 
-  if (uniformLink.type === 'email') {
+  if (uniformLink.type === "email") {
     return `mailto:${uniformLink.path}`;
   }
 
@@ -96,13 +107,21 @@ export const formatUniformLink = (uniformLink?: LinkParamValue): string => {
  * @param {string} href - The URL or link to evaluate.
  * @returns {boolean} - True if the link starts with "http", indicating it is an external link; otherwise, false.
  */
-export const isExternalLink = (href?: string): boolean => href?.startsWith('http') ?? false;
+export const isExternalLink = (href?: string): boolean =>
+  href?.startsWith("http") ?? false;
 
-export const checkIsCurrentRoute = (router: NextRouter, link: LinkParamValue) => {
+export const checkIsCurrentRoute = (
+  router: NextRouter,
+  link: LinkParamValue,
+) => {
   if (!link) return false;
   const { asPath } = router;
-  const localeFromLink = 'dynamicInputValues' in link ? link.dynamicInputValues?.locale : undefined;
-  const [pathWithoutQuery] = asPath.split('?');
-  const linkPath = link.path === '/' ? link.path : link.path.replace(/\/$/, '');
-  return pathWithoutQuery === (localeFromLink ? linkPath.replace(`/${localeFromLink}`, '') : linkPath);
+  const localeFromLink =
+    "dynamicInputValues" in link ? link.dynamicInputValues?.locale : undefined;
+  const [pathWithoutQuery] = asPath.split("?");
+  const linkPath = link.path === "/" ? link.path : link.path.replace(/\/$/, "");
+  return (
+    pathWithoutQuery ===
+    (localeFromLink ? linkPath.replace(`/${localeFromLink}`, "") : linkPath)
+  );
 };

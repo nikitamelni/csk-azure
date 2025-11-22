@@ -1,11 +1,19 @@
-import { FC } from 'react';
-import { UniformSlot, useUniformContextualEditingState } from '@uniformdev/canvas-react';
-import { DemoHeroVariants, FixedHeroProps, FlexibleHeroProps, FlexibleHeroSlots } from '.';
-import { BaseHeroButton, BaseHeroImage, BaseHeroText } from './atoms';
-import { ColumnsVariant } from './columns-variant';
-import { DefaultVariant } from './default-variant';
-import { getButtonAlignmentClass, getTextAlignmentClass } from './style-utils';
-import { cleanUpPrefix } from './utils';
+import { FC } from "react";
+import {
+  UniformSlot,
+  useUniformContextualEditingState,
+} from "@uniformdev/canvas-react";
+import {
+  DemoHeroVariants,
+  FixedHeroProps,
+  FlexibleHeroProps,
+  FlexibleHeroSlots,
+} from ".";
+import { BaseHeroButton, BaseHeroImage, BaseHeroText } from "./atoms";
+import { ColumnsVariant } from "./columns-variant";
+import { DefaultVariant } from "./default-variant";
+import { getButtonAlignmentClass, getTextAlignmentClass } from "./style-utils";
+import { cleanUpPrefix } from "./utils";
 
 type FixedHeroComponentProps = {
   isFlexibleHero?: false;
@@ -15,7 +23,9 @@ type FlexibleHeroComponentProps = {
   isFlexibleHero: true;
 } & FlexibleHeroProps;
 
-export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> = ({
+export const DemoHero: FC<
+  FixedHeroComponentProps | FlexibleHeroComponentProps
+> = ({
   // Eyebrow Text Parameters
   eyebrowTitleText,
   eyebrowTitleTag,
@@ -91,12 +101,15 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
   component,
 }) => {
   const { previewMode } = useUniformContextualEditingState();
-  const isEditorPreviewMode = previewMode === 'editor';
+  const isEditorPreviewMode = previewMode === "editor";
 
   const variant = component.variant as DemoHeroVariants | undefined;
 
   const demoHeroContent = isFlexibleHero ? (
-    <UniformSlot name={FlexibleHeroSlots.FlexibleHeroContent} emptyPlaceholder={<div className="h-20" />} />
+    <UniformSlot
+      name={FlexibleHeroSlots.FlexibleHeroContent}
+      emptyPlaceholder={<div className="h-20" />}
+    />
   ) : (
     <>
       <BaseHeroText
@@ -114,7 +127,7 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
             eyebrowTitleLetterSpacing,
             eyebrowTitleLineCountRestrictions,
           },
-          'eyebrowTitle'
+          "eyebrowTitle",
         )}
         isEditorPreviewMode={isEditorPreviewMode}
         component={component}
@@ -135,7 +148,7 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
             titleLetterSpacing,
             titleLineCountRestrictions,
           },
-          'title'
+          "title",
         )}
         isEditorPreviewMode={isEditorPreviewMode}
         component={component}
@@ -156,7 +169,7 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
             descriptionLetterSpacing,
             descriptionLineCountRestrictions,
           },
-          'description'
+          "description",
         )}
         isEditorPreviewMode={isEditorPreviewMode}
         component={component}
@@ -166,7 +179,10 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
   );
 
   const demoHeroCTA = isFlexibleHero ? (
-    <UniformSlot name={FlexibleHeroSlots.FlexibleHeroCta} emptyPlaceholder={<div className="mx-40 h-20 w-full" />} />
+    <UniformSlot
+      name={FlexibleHeroSlots.FlexibleHeroCta}
+      emptyPlaceholder={<div className="mx-40 h-20 w-full" />}
+    />
   ) : (
     <>
       <BaseHeroButton
@@ -188,7 +204,7 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
             primaryButtonHoverButtonColor,
             primaryButtonHoverTextColor,
           },
-          'primaryButton'
+          "primaryButton",
         )}
         isEditorPreviewMode={isEditorPreviewMode}
         component={component}
@@ -222,7 +238,7 @@ export const DemoHero: FC<FixedHeroComponentProps | FlexibleHeroComponentProps> 
               imageUnoptimized,
               imageFill,
             },
-            'image'
+            "image",
           )}
           component={component}
           isEditorPreviewMode={isEditorPreviewMode}

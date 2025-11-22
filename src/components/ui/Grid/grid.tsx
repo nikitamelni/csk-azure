@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import BaseContainer from '@/components/ui/Container';
-import { cn, resolveViewPort } from '@/utils/styling';
-import { GridProps } from '.';
+import { FC } from "react";
+import BaseContainer from "@/components/ui/Container";
+import { cn, resolveViewPort } from "@/utils/styling";
+import { GridProps } from ".";
 
 export const Grid: FC<GridProps> = ({
   className,
@@ -16,18 +16,20 @@ export const Grid: FC<GridProps> = ({
   children,
   alignItems,
 }) => (
-  <BaseContainer {...{ backgroundColor, spacing, border, fluidContent, height }}>
+  <BaseContainer
+    {...{ backgroundColor, spacing, border, fluidContent, height }}
+  >
     <div
       className={cn(
-        'grid',
+        "grid",
         {
-          [resolveViewPort(columnsCount, 'grid-cols-{value}')]: columnsCount,
-          [resolveViewPort(gapX, 'gap-x-{value}')]: gapX,
-          [resolveViewPort(gapY, 'gap-y-{value}')]: gapY,
-          [resolveViewPort(height, 'h-{value}')]: height,
-          [resolveViewPort(alignItems, 'items-{value}')]: alignItems,
+          [resolveViewPort(columnsCount, "grid-cols-{value}")]: columnsCount,
+          [resolveViewPort(gapX, "gap-x-{value}")]: gapX,
+          [resolveViewPort(gapY, "gap-y-{value}")]: gapY,
+          [resolveViewPort(height, "h-{value}")]: height,
+          [resolveViewPort(alignItems, "items-{value}")]: alignItems,
         },
-        className
+        className,
       )}
     >
       {children}

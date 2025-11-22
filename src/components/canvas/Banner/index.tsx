@@ -1,10 +1,10 @@
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { ContainerParameters } from '@/components/canvas/Container/parameters';
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { ContainerParameters } from "@/components/canvas/Container/parameters";
 
 export enum ContentAlignment {
-  Left = 'left',
-  Center = 'center',
-  Right = 'right',
+  Left = "left",
+  Center = "center",
+  Right = "right",
 }
 
 export type BannerParameters = ContainerParameters & {
@@ -13,9 +13,9 @@ export type BannerParameters = ContainerParameters & {
   floating?: boolean;
 };
 export enum BannerSlots {
-  BannerContent = 'bannerContent',
+  BannerContent = "bannerContent",
 }
 
 export type BannerProps = ComponentProps<BannerParameters>;
 
-export { default } from './banner';
+export { default } from "./banner";

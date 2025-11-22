@@ -1,6 +1,6 @@
 export type MediaPlaceholderType = {
-  type?: 'image' | 'video';
+  type?: "image" | "video";
   placeholder?: string;
 };
 
-export { MediaPlaceholder as default } from './media-placeholder';
+export { MediaPlaceholder as default } from "./media-placeholder";

@@ -1,7 +1,7 @@
-import { FC, ReactNode } from 'react';
-import Container from '@/components/ui/Container';
-import Rating from '@/components/ui/Rating';
-import { ReviewProps } from '.';
+import { FC, ReactNode } from "react";
+import Container from "@/components/ui/Container";
+import Rating from "@/components/ui/Rating";
+import { ReviewProps } from ".";
 
 type DefaultVariantProps = ReviewProps & {
   ReviewImage: ReactNode;
@@ -25,7 +25,9 @@ export const DefaultVariant: FC<DefaultVariantProps> = ({
 }) => (
   <Container {...{ backgroundColor, spacing, border, fluidContent, height }}>
     <div className="mx-auto flex lg:max-w-[60%]">
-      <div className="aspect-square size-12 shrink-0 rounded-full">{ReviewImage}</div>
+      <div className="aspect-square size-12 shrink-0 rounded-full">
+        {ReviewImage}
+      </div>
       <div className="ml-6">
         {ReviewPersonInfo}
         <div className="py-4">

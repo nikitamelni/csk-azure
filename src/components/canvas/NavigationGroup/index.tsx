@@ -1,12 +1,12 @@
-import { AssetParamValue } from '@uniformdev/assets';
-import { LinkParamValue } from '@uniformdev/canvas';
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { TextParameters } from '@/components/canvas/Text/parameters';
-import BaseImage from '@/components/ui/Image';
-import InlineSVG from '@/components/ui/InlineSVG';
-import { ViewPort } from '@/types/cskTypes';
-import { resolveAsset } from '@/utils/assets';
-import NavigationGroupClient from './navigation-group-client';
+import { AssetParamValue } from "@uniformdev/assets";
+import { LinkParamValue } from "@uniformdev/canvas";
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { TextParameters } from "@/components/canvas/Text/parameters";
+import BaseImage from "@/components/ui/Image";
+import InlineSVG from "@/components/ui/InlineSVG";
+import { ViewPort } from "@/types/cskTypes";
+import { resolveAsset } from "@/utils/assets";
+import NavigationGroupClient from "./navigation-group-client";
 
 export type NavigationGroupParameters = TextParameters & {
   icon?: AssetParamValue;
@@ -19,19 +19,23 @@ export type NavigationGroupParameters = TextParameters & {
 };
 
 export enum NavigationGroupSlots {
-  Links = 'links',
+  Links = "links",
 }
 
 export type NavigationGroupProps = ComponentProps<NavigationGroupParameters>;
 
 const NavigationGroup = (props: NavigationGroupProps) => {
   const [resolvedImage] = resolveAsset(props.icon);
-  const { url, title = '' } = resolvedImage || {};
+  const { url, title = "" } = resolvedImage || {};
 
   const renderUrl = () => {
     if (!url) return null;
 
-    return url.endsWith('.svg') ? <InlineSVG src={url} alt={title} fill /> : <BaseImage src={url} alt={title} fill />;
+    return url.endsWith(".svg") ? (
+      <InlineSVG src={url} alt={title} fill />
+    ) : (
+      <BaseImage src={url} alt={title} fill />
+    );
   };
 
   return <NavigationGroupClient {...props} icon={renderUrl()} />;

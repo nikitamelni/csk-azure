@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import BaseContainer from '@/components/ui/Container';
-import { FooterProps } from './';
+import { FC } from "react";
+import BaseContainer from "@/components/ui/Container";
+import { FooterProps } from "./";
 
 export const Footer: FC<FooterProps> = ({
   logo,

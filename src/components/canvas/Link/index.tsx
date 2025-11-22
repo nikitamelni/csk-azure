@@ -1,5 +1,5 @@
-import { LinkParamValue } from '@uniformdev/canvas';
-import { ComponentProps } from '@uniformdev/canvas-react';
+import { LinkParamValue } from "@uniformdev/canvas";
+import { ComponentProps } from "@uniformdev/canvas-react";
 
 export type LinkParameters = {
   displayName?: string;
@@ -8,9 +8,9 @@ export type LinkParameters = {
 };
 
 export enum LinkSlots {
-  LinkContent = 'linkContent',
+  LinkContent = "linkContent",
 }
 
 export type LinkProps = ComponentProps<LinkParameters>;
 
-export { default } from './link';
+export { default } from "./link";

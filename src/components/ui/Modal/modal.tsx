@@ -1,8 +1,19 @@
-import { FC, useCallback, useState, MouseEvent, useRef, useEffect } from 'react';
-import { cn } from '@/utils/styling';
-import { ModalProps } from '.';
-import { CloseIcon } from './close-icon';
-import { getCloseButtonClasses, getDialogClasses, getFormClasses } from './style-utils';
+import {
+  FC,
+  useCallback,
+  useState,
+  MouseEvent,
+  useRef,
+  useEffect,
+} from "react";
+import { cn } from "@/utils/styling";
+import { ModalProps } from ".";
+import { CloseIcon } from "./close-icon";
+import {
+  getCloseButtonClasses,
+  getDialogClasses,
+  getFormClasses,
+} from "./style-utils";
 
 export const Modal: FC<ModalProps> = ({
   trigger,
@@ -29,7 +40,7 @@ export const Modal: FC<ModalProps> = ({
   }, [disableCloseModalOnClickOutside]);
 
   const toggleModal = useCallback(() => {
-    setShowModal(prev => !prev);
+    setShowModal((prev) => !prev);
   }, []);
 
   const handleClickContent = useCallback((e: MouseEvent<HTMLFormElement>) => {
@@ -38,15 +49,16 @@ export const Modal: FC<ModalProps> = ({
 
   useEffect(() => {
     if (!modalActionsRef.current) return;
-    const currentActions = modalActionsRef.current.querySelectorAll('button, a');
+    const currentActions =
+      modalActionsRef.current.querySelectorAll("button, a");
     const handleClickButton = () => setShowModal(false);
 
-    currentActions.forEach(button => {
-      button.addEventListener('click', handleClickButton);
+    currentActions.forEach((button) => {
+      button.addEventListener("click", handleClickButton);
     });
     return () =>
-      currentActions.forEach(button => {
-        button.removeEventListener('click', handleClickButton);
+      currentActions.forEach((button) => {
+        button.removeEventListener("click", handleClickButton);
       });
   }, []);
 
@@ -63,10 +75,18 @@ export const Modal: FC<ModalProps> = ({
         >
           <form
             method="dialog"
-            className={cn(getFormClasses({ maxWidth, backgroundColor }), className)}
+            className={cn(
+              getFormClasses({ maxWidth, backgroundColor }),
+              className,
+            )}
             onClick={handleClickContent}
           >
-            <button onClick={toggleModal} className={getCloseButtonClasses({ disableCloseModalOnClickOutside })}>
+            <button
+              onClick={toggleModal}
+              className={getCloseButtonClasses({
+                disableCloseModalOnClickOutside,
+              })}
+            >
               <CloseIcon
                 className={cn({
                   [`fill-${closeIconColor}`]: closeIconColor,

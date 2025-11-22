@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import { UniformSlot } from '@uniformdev/canvas-react';
-import { ReviewProps, ReviewSlots, ReviewVariants } from '.';
-import { DefaultVariant } from './default-variant';
-import { MultiColumnVariant } from './multi-column-variant';
+import { FC } from "react";
+import { UniformSlot } from "@uniformdev/canvas-react";
+import { ReviewProps, ReviewSlots, ReviewVariants } from ".";
+import { DefaultVariant } from "./default-variant";
+import { MultiColumnVariant } from "./multi-column-variant";
 
-const Review: FC<ReviewProps> = props => {
+const Review: FC<ReviewProps> = (props) => {
   const { component } = props;
   const variant = component.variant as ReviewVariants | undefined;
   const isMultiColumn = variant === ReviewVariants.MultiColumn;
@@ -20,13 +20,25 @@ const Review: FC<ReviewProps> = props => {
     ReviewPersonInfo: (
       <UniformSlot
         name={ReviewSlots.ReviewPersonInfo}
-        emptyPlaceholder={isMultiColumn ? <div className="h-20 w-full" /> : <div className="h-20 w-52" />}
+        emptyPlaceholder={
+          isMultiColumn ? (
+            <div className="h-20 w-full" />
+          ) : (
+            <div className="h-20 w-52" />
+          )
+        }
       />
     ),
     ReviewContent: (
       <UniformSlot
         name={ReviewSlots.ReviewContent}
-        emptyPlaceholder={isMultiColumn ? <div className="h-20 w-full" /> : <div className="h-20 w-52" />}
+        emptyPlaceholder={
+          isMultiColumn ? (
+            <div className="h-20 w-full" />
+          ) : (
+            <div className="h-20 w-52" />
+          )
+        }
       />
     ),
   };

@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { useUniformContext } from '@uniformdev/context-react';
-import BaseThemeSwitcher from '@/components/ui/ThemeSwitcher';
-import { ThemeSwitcherProps } from '.';
+import { FC } from "react";
+import { useUniformContext } from "@uniformdev/context-react";
+import BaseThemeSwitcher from "@/components/ui/ThemeSwitcher";
+import { ThemeSwitcherProps } from ".";
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ iconColor }) => {
   const { context } = useUniformContext();

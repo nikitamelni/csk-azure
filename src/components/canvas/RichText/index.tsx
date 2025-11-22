@@ -1,7 +1,7 @@
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { RichTextNode } from '@uniformdev/richtext';
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { RichTextNode } from "@uniformdev/richtext";
 
-type Size = 'sm' | 'base' | 'lg' | 'xl' | '2xl';
+type Size = "sm" | "base" | "lg" | "xl" | "2xl";
 
 export type RichTextAdditionalProps = {
   className?: string;
@@ -15,5 +15,6 @@ export type RichTextParameters = {
   lineCountRestrictions?: string;
 };
 
-export { default } from './rich-text';
-export type RichTextProps = ComponentProps<RichTextParameters> & RichTextAdditionalProps;
+export { default } from "./rich-text";
+export type RichTextProps = ComponentProps<RichTextParameters> &
+  RichTextAdditionalProps;

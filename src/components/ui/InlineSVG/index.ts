@@ -10,4 +10,4 @@ export type InlineSVGProps = {
   alt?: string;
 };
 
-export { InlineSVG as default } from './inline-svg';
+export { InlineSVG as default } from "./inline-svg";

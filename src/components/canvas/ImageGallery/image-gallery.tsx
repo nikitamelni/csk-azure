@@ -1,11 +1,11 @@
-import { FC } from 'react';
-import { AssetParamValue } from '@uniformdev/assets';
-import { flattenValues } from '@uniformdev/canvas';
-import CanvasImage from '@/components/canvas/Image';
-import Container from '@/components/ui/Container';
-import BaseImage from '@/components/ui/Image';
-import { ImageGalleryProps, ImageGallerySlots } from '.';
-import { GalleryInner } from './gallery-inner';
+import { FC } from "react";
+import { AssetParamValue } from "@uniformdev/assets";
+import { flattenValues } from "@uniformdev/canvas";
+import CanvasImage from "@/components/canvas/Image";
+import Container from "@/components/ui/Container";
+import BaseImage from "@/components/ui/Image";
+import { ImageGalleryProps, ImageGallerySlots } from ".";
+import { GalleryInner } from "./gallery-inner";
 
 const ImageGallery: FC<ImageGalleryProps> = ({
   backgroundColor,
@@ -28,7 +28,12 @@ const ImageGallery: FC<ImageGalleryProps> = ({
                 {...(flattenValues(item) as {
                   width?: number;
                   height?: number;
-                  objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
+                  objectFit?:
+                    | "fill"
+                    | "contain"
+                    | "cover"
+                    | "none"
+                    | "scale-down";
                   overlayColor?: string;
                   overlayOpacity?: string;
                 })}
@@ -43,8 +48,8 @@ const ImageGallery: FC<ImageGalleryProps> = ({
           component: (
             <BaseImage
               src={item.fields?.url?.value}
-              alt={item.fields?.title?.value || ''}
-              style={{ objectFit: 'cover' }}
+              alt={item.fields?.title?.value || ""}
+              style={{ objectFit: "cover" }}
               fill
             />
           ),
@@ -54,7 +59,11 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   return (
     <Container {...{ backgroundColor, spacing, border, fluidContent, height }}>
       <div className="flex flex-col gap-1">
-        <GalleryInner slot={slotsToRender} aspectRatio={aspectRatio} config={config} />
+        <GalleryInner
+          slot={slotsToRender}
+          aspectRatio={aspectRatio}
+          config={config}
+        />
       </div>
     </Container>
   );

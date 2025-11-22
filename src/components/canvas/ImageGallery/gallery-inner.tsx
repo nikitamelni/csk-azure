@@ -1,12 +1,12 @@
-import { FC, ReactNode } from 'react';
-import { MasonryProps } from 'react-responsive-masonry';
+import { FC, ReactNode } from "react";
+import { MasonryProps } from "react-responsive-masonry";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import _Masonry from 'react-responsive-masonry/lib/Masonry';
-import { cn } from '@/utils/styling';
-import { ImageGalleryParameters, ImageGalleryProps } from '.';
+import _Masonry from "react-responsive-masonry/lib/Masonry";
+import { cn } from "@/utils/styling";
+import { ImageGalleryParameters, ImageGalleryProps } from ".";
 
-const Masonry: React.FC<MasonryProps> = props => <_Masonry {...props} />;
+const Masonry: React.FC<MasonryProps> = (props) => <_Masonry {...props} />;
 
 const DEFAULT_GALLERY_CONFIG = {
   firstLineCount: 2,
@@ -16,11 +16,15 @@ const DEFAULT_GALLERY_CONFIG = {
 
 type GalleryInnerProps = {
   slot?: { items?: { _id: string; component: ReactNode }[] };
-  aspectRatio?: ImageGalleryParameters['aspectRatio'];
-  config?: ImageGalleryProps['config'];
+  aspectRatio?: ImageGalleryParameters["aspectRatio"];
+  config?: ImageGalleryProps["config"];
 };
 
-export const GalleryInner: FC<GalleryInnerProps> = ({ slot, aspectRatio, config }) => {
+export const GalleryInner: FC<GalleryInnerProps> = ({
+  slot,
+  aspectRatio,
+  config,
+}) => {
   const {
     firstLineCount = DEFAULT_GALLERY_CONFIG.firstLineCount,
     secondLineCount = DEFAULT_GALLERY_CONFIG.secondLineCount,
@@ -41,7 +45,7 @@ export const GalleryInner: FC<GalleryInnerProps> = ({ slot, aspectRatio, config 
         }
         return acc;
       },
-      [[], [], []]
+      [[], [], []],
     ) || [];
 
   return (
@@ -50,13 +54,17 @@ export const GalleryInner: FC<GalleryInnerProps> = ({ slot, aspectRatio, config 
         images.length ? (
           <Masonry
             key={`line-${lineIndex}`}
-            columnsCount={lineIndex < 2 || images.length < otherLinesCount ? images.length : otherLinesCount}
+            columnsCount={
+              lineIndex < 2 || images.length < otherLinesCount
+                ? images.length
+                : otherLinesCount
+            }
             gutter="4px"
           >
             {images.map((img, ImageIndex) => (
               <div
                 key={`img-${ImageIndex}`}
-                className={cn('flex flex-1 items-center justify-center', {
+                className={cn("flex flex-1 items-center justify-center", {
                   [`aspect-${aspectRatio}`]: !!aspectRatio,
                 })}
               >
@@ -64,7 +72,7 @@ export const GalleryInner: FC<GalleryInnerProps> = ({ slot, aspectRatio, config 
               </div>
             ))}
           </Masonry>
-        ) : null
+        ) : null,
       )}
     </>
   );

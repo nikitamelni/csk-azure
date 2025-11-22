@@ -1,12 +1,12 @@
-import { AssetParamValue } from '@uniformdev/assets';
-import { ComponentProps } from '@uniformdev/canvas-react';
-import { ViewPort } from '@/types/cskTypes';
+import { AssetParamValue } from "@uniformdev/assets";
+import { ComponentProps } from "@uniformdev/canvas-react";
+import { ViewPort } from "@/types/cskTypes";
 
 export type ImageParameters = {
   image?: AssetParamValue;
   width?: number;
   height?: number;
-  objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
+  objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down";
   overlayColor?: string;
   overlayOpacity?: string;
   border?: string | ViewPort<string>;
@@ -17,4 +17,4 @@ export type ImageParameters = {
 
 export type ImageProps = ComponentProps<ImageParameters>;
 
-export { default } from './image';
+export { default } from "./image";

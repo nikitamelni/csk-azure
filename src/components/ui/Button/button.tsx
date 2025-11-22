@@ -1,17 +1,22 @@
-import { FC } from 'react';
-import BaseLink from '@/components/ui/Link';
-import { isExternalLink } from '@/utils/routing';
-import { cn, resolveViewPort } from '@/utils/styling';
-import { ButtonProps, ButtonVariant } from '.';
+import { FC } from "react";
+import BaseLink from "@/components/ui/Link";
+import { isExternalLink } from "@/utils/routing";
+import { cn, resolveViewPort } from "@/utils/styling";
+import { ButtonProps, ButtonVariant } from ".";
 
-const ButtonWrapper: FC<ButtonProps> = ({ children, href, className, onClick }) => {
+const ButtonWrapper: FC<ButtonProps> = ({
+  children,
+  href,
+  className,
+  onClick,
+}) => {
   const isCurrentLinkExternal = isExternalLink(href);
   return href ? (
     <BaseLink
       className={className}
       link={href}
       openInNewTab={isCurrentLinkExternal}
-      rel={isCurrentLinkExternal ? 'noopener noreferrer' : ''}
+      rel={isCurrentLinkExternal ? "noopener noreferrer" : ""}
     >
       {children}
     </BaseLink>
@@ -34,8 +39,8 @@ export const Button: FC<ButtonProps> = ({
   isActive,
   icon,
   iconPosition,
-  border = '',
-  textTransform = '',
+  border = "",
+  textTransform = "",
   textWeight,
   textFont,
   size,
@@ -43,27 +48,27 @@ export const Button: FC<ButtonProps> = ({
   hoverTextColor,
 }) => {
   const baseStyles = cn(
-    'block w-max font-medium focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50',
+    "block w-max font-medium focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
     {
       [`text-${textColor}`]: textColor,
       [`hover:text-${hoverTextColor}`]: hoverTextColor,
-      'flex flex-row gap-x-2': icon,
-      'flex-row-reverse': icon && iconPosition === 'right',
+      "flex flex-row gap-x-2": icon,
+      "flex-row-reverse": icon && iconPosition === "right",
       [`font-${textFont}`]: !!textFont,
       [`font-${textWeight}`]: !!textWeight,
       [`p-${size}`]: size,
       [textTransform]: !!textTransform,
-      [resolveViewPort(border, '{value}')]: border,
-      [resolveViewPort(textSize, 'text-{value}')]: textSize,
-    }
+      [resolveViewPort(border, "{value}")]: border,
+      [resolveViewPort(textSize, "text-{value}")]: textSize,
+    },
   );
   const defaultStyles = cn({
     [`bg-${buttonColor}`]: buttonColor,
     [`hover:bg-${hoverButtonColor}`]: hoverButtonColor,
   });
-  const linkStyles = cn('bg-transparent hover:underline hover:opacity-100', {
+  const linkStyles = cn("bg-transparent hover:underline hover:opacity-100", {
     [`hover:decoration-${buttonColor}`]: buttonColor,
-    '!underline': href === isActive,
+    "!underline": href === isActive,
   });
   return (
     <ButtonWrapper
@@ -75,7 +80,7 @@ export const Button: FC<ButtonProps> = ({
           [defaultStyles]: !variant,
           [linkStyles]: variant === ButtonVariant.Link,
         },
-        className
+        className,
       )}
     >
       {icon}

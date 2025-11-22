@@ -1,8 +1,8 @@
-import { PropsWithChildren, ReactNode } from 'react';
-import { ViewPort } from '@/types/cskTypes';
+import { PropsWithChildren, ReactNode } from "react";
+import { ViewPort } from "@/types/cskTypes";
 
 export enum ButtonVariant {
-  Link = 'link',
+  Link = "link",
 }
 
 export type ButtonProps = PropsWithChildren<{
@@ -14,15 +14,15 @@ export type ButtonProps = PropsWithChildren<{
   textColor?: string;
   textSize?: string | ViewPort<string>;
   textWeight?: string;
-  textFont?: 'uppercase' | 'lowercase' | 'capitalize' | 'normal-case';
+  textFont?: "uppercase" | "lowercase" | "capitalize" | "normal-case";
   textTransform?: string;
   buttonColor?: string;
   isActive?: boolean;
   onClick?: () => void;
   icon?: ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
   hoverButtonColor?: string;
   hoverTextColor?: string;
 }>;
 
-export { Button as default } from './button';
+export { Button as default } from "./button";
