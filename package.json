@@ -3,8 +3,6 @@
   "version": "6.1.37",
   "private": true,
   "engines": {
-    "yarn": "please-use-npm",
-    "pnpm": "please-use-npm",
     "node": ">20.0.0 <22.0.0",
     "npm": ">=10"
   },
