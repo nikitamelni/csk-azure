@@ -73,8 +73,8 @@ export const getStaticPaths = async () => {
         type === "composition" ? [...acc, path] : acc,
       [],
     ) || [];
-  // explicitly using EN locale, but more can be added if needed
-  const pathsWithLocale = paths.map((path) => path.replace(":locale", "en"));
+  // removing locale from the path to match the original site structure
+  const pathsWithLocale = paths.map((path) => path.replace("/:locale", ""));
 
   // replacing the dynamic locaiton details with the actual location details
   // getting all possible location to pre-render them. location are stored in Uniform as entries
