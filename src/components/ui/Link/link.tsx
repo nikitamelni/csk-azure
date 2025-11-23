@@ -11,7 +11,7 @@ export const Link: FC<LinkProps> = ({
   className,
 }) => (
   <NextLink
-    href={link}
+    href={link.replace("/en", "")}
     className={cn(
       "[&:hover_img]:scale-[0.98] [&_img]:transition-transform hover:underline transition-transform",
       className,
