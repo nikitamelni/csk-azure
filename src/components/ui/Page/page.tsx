@@ -1,17 +1,10 @@
-import { FC } from "react";
-import { cn } from "@/utils/styling";
-import { PageProps } from ".";
+import { FC } from 'react';
+import { cn } from '@/utils/styling';
+import { PageProps } from '.';
 
-export const Page: FC<PageProps> = ({
-  className,
-  header,
-  footer,
-  children,
-  backgroundColor,
-  ...restProps
-}) => (
+export const Page: FC<PageProps> = ({ className, header, footer, children, backgroundColor, ...restProps }) => (
   <div
-    className={cn("flex min-h-screen flex-col", className, {
+    className={cn('flex min-h-screen flex-col', className, {
       [`bg-${backgroundColor}`]: !!backgroundColor,
     })}
     {...restProps}

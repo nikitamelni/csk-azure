@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 
 export type LinkProps = PropsWithChildren<{
   link: string;
@@ -7,4 +7,4 @@ export type LinkProps = PropsWithChildren<{
   rel?: string;
 }>;
 
-export { Link as default } from "./link";
+export { Link as default } from './link';

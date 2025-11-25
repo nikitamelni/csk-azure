@@ -1,5 +1,5 @@
-import { ComponentProps } from "@uniformdev/canvas-react";
-import { ContainerParameters } from "@/components/canvas/Container/parameters";
+import { ComponentProps } from '@uniformdev/canvas-react';
+import { ContainerParameters } from '@/components/canvas/Container/parameters';
 
 export type CarouselParameters = ContainerParameters & {
   itemsPerPage?: string;
@@ -7,9 +7,9 @@ export type CarouselParameters = ContainerParameters & {
 };
 
 export enum CarouselSlots {
-  Items = "carouselItems",
+  Items = 'carouselItems',
 }
 
 export type CarouselProps = ComponentProps<CarouselParameters>;
 
-export { default } from "./carousel";
+export { default } from './carousel';

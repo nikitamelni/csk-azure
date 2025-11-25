@@ -1,7 +1,7 @@
-import { FC } from "react";
-import BaseText from "@/components/ui/Text";
-import { cn } from "@/utils/styling";
-import { IconLabelProps } from ".";
+import { FC } from 'react';
+import BaseText from '@/components/ui/Text';
+import { cn } from '@/utils/styling';
+import { IconLabelProps } from '.';
 
 export const IconLabel: FC<IconLabelProps> = ({
   icon,
@@ -22,18 +22,16 @@ export const IconLabel: FC<IconLabelProps> = ({
 }) => (
   <div
     className={cn(
-      "flex w-fit items-center gap-x-3",
+      'flex w-fit items-center gap-x-3',
       {
         [`text-${size}`]: !!size,
         [`text-${color}`]: !!color,
-        "flex-row-reverse": icon && iconPosition === "right",
+        'flex-row-reverse': icon && iconPosition === 'right',
       },
-      className,
+      className
     )}
   >
-    {icon && (
-      <div className={cn("relative size-[1em]", iconClassName)}>{icon}</div>
-    )}
+    {icon && <div className={cn('relative size-[1em]', iconClassName)}>{icon}</div>}
     <BaseText
       {...{
         alignment,

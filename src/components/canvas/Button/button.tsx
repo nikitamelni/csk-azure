@@ -1,16 +1,11 @@
-import { FC, useMemo } from "react";
-import { useRouter } from "next/router";
-import {
-  UniformText,
-  useUniformContextualEditingState,
-} from "@uniformdev/canvas-react";
-import BaseButton, {
-  ButtonProps as BaseButtonProps,
-} from "@/components/ui/Button";
-import BaseImage from "@/components/ui/Image";
-import { resolveAsset } from "@/utils/assets";
-import { checkIsCurrentRoute, formatUniformLink } from "@/utils/routing";
-import { ButtonProps } from ".";
+import { FC, useMemo } from 'react';
+import { useRouter } from 'next/router';
+import { UniformText, useUniformContextualEditingState } from '@uniformdev/canvas-react';
+import BaseButton, { ButtonProps as BaseButtonProps } from '@/components/ui/Button';
+import BaseImage from '@/components/ui/Image';
+import { resolveAsset } from '@/utils/assets';
+import { checkIsCurrentRoute, formatUniformLink } from '@/utils/routing';
+import { ButtonProps } from '.';
 
 const Button: FC<ButtonProps> = ({
   component,
@@ -32,18 +27,15 @@ const Button: FC<ButtonProps> = ({
   text,
 }) => {
   const router = useRouter();
-  const isCurrentRoute = useMemo(
-    () => checkIsCurrentRoute(router, link),
-    [router, link],
-  );
+  const isCurrentRoute = useMemo(() => checkIsCurrentRoute(router, link), [router, link]);
   const { previewMode } = useUniformContextualEditingState();
-  const isEditorPreviewMode = previewMode === "editor";
+  const isEditorPreviewMode = previewMode === 'editor';
 
   const href = formatUniformLink(link);
 
   const iconParameters = useMemo(() => {
     const [resolvedImage] = resolveAsset(icon);
-    const { url, title = "" } = resolvedImage || {};
+    const { url, title = '' } = resolvedImage || {};
     if (!url) return undefined;
 
     return {
@@ -64,8 +56,8 @@ const Button: FC<ButtonProps> = ({
         width={20}
         height={20}
         containerStyle={{
-          width: "20px",
-          height: "20px",
+          width: '20px',
+          height: '20px',
         }}
       />
     );
@@ -77,7 +69,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <BaseButton
-      variant={component.variant as BaseButtonProps["variant"]}
+      variant={component.variant as BaseButtonProps['variant']}
       href={href}
       border={border}
       size={size}

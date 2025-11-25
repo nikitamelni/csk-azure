@@ -1,13 +1,10 @@
-import { FC, useCallback, useState } from "react";
-import dynamic from "next/dynamic";
-import { cn, resolveViewPort } from "@/utils/styling";
-import { VideoProps } from ".";
-import { PlayButton } from "./play-button";
+import { FC, useCallback, useState } from 'react';
+import dynamic from 'next/dynamic';
+import { cn, resolveViewPort } from '@/utils/styling';
+import { VideoProps } from '.';
+import { PlayButton } from './play-button';
 
-const ReactPlayer = dynamic(
-  () => import("react-player/lazy").then((mod) => mod.default),
-  { ssr: false },
-);
+const ReactPlayer = dynamic(() => import('react-player/lazy').then(mod => mod.default), { ssr: false });
 
 export const Video: FC<VideoProps> = ({
   url,
@@ -30,8 +27,8 @@ export const Video: FC<VideoProps> = ({
     <div className="relative aspect-video size-full [&_video]:!object-cover">
       {url && (
         <div
-          className={cn("absolute left-0 top-0 size-full overflow-hidden", {
-            [resolveViewPort(border, "{value}")]: border,
+          className={cn('absolute left-0 top-0 size-full overflow-hidden', {
+            [resolveViewPort(border, '{value}')]: border,
           })}
         >
           <ReactPlayer
@@ -50,9 +47,9 @@ export const Video: FC<VideoProps> = ({
         </div>
       )}
       <div
-        className={cn("absolute inset-0 pointer-events-none", {
+        className={cn('absolute inset-0 pointer-events-none', {
           [`bg-${overlayColor}`]: overlayColor,
-          [resolveViewPort(border, "{value}")]: border,
+          [resolveViewPort(border, '{value}')]: border,
         })}
         style={{ opacity: overlayOpacity || 0 }}
       />

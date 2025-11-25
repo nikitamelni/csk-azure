@@ -1,16 +1,16 @@
-import { FC } from "react";
-import { imageFrom } from "@uniformdev/assets";
+import { FC } from 'react';
+import { imageFrom } from '@uniformdev/assets';
 
-import { ComponentInstance } from "@uniformdev/canvas";
-import { UniformText } from "@uniformdev/canvas-react";
-import { TextParameters } from "@/components/canvas/Text/parameters";
-import BaseButton, { ButtonVariant } from "@/components/ui/Button";
-import BaseImage from "@/components/ui/Image";
-import MediaPlaceholder from "@/components/ui/MediaPlaceholder";
-import BaseText from "@/components/ui/Text";
-import { resolveAsset } from "@/utils/assets";
-import { formatUniformLink } from "@/utils/routing";
-import { BaseButtonParameters, BaseImageParameters } from ".";
+import { ComponentInstance } from '@uniformdev/canvas';
+import { UniformText } from '@uniformdev/canvas-react';
+import { TextParameters } from '@/components/canvas/Text/parameters';
+import BaseButton, { ButtonVariant } from '@/components/ui/Button';
+import BaseImage from '@/components/ui/Image';
+import MediaPlaceholder from '@/components/ui/MediaPlaceholder';
+import BaseText from '@/components/ui/Text';
+import { resolveAsset } from '@/utils/assets';
+import { formatUniformLink } from '@/utils/routing';
+import { BaseButtonParameters, BaseImageParameters } from '.';
 
 type ComponentProps = {
   component: ComponentInstance;
@@ -28,18 +28,17 @@ export const BaseHeroText: FC<TextParameters & ComponentProps> = ({
 
   return (
     <BaseText {...props}>
-      <UniformText
-        placeholder="Text goes here"
-        parameterId={parameterId}
-        as={props.tag || undefined}
-      />
+      <UniformText placeholder="Text goes here" parameterId={parameterId} as={props.tag || undefined} />
     </BaseText>
   );
 };
 
-export const BaseHeroButton: FC<
-  BaseButtonParameters & { variant?: ButtonVariant } & ComponentProps
-> = ({ parameterId, isEditorPreviewMode, text, ...props }) => {
+export const BaseHeroButton: FC<BaseButtonParameters & { variant?: ButtonVariant } & ComponentProps> = ({
+  parameterId,
+  isEditorPreviewMode,
+  text,
+  ...props
+}) => {
   const { link, icon } = props;
   const href = formatUniformLink(link);
 
@@ -47,7 +46,7 @@ export const BaseHeroButton: FC<
 
   const Icon = () => {
     const [resolvedImage] = resolveAsset(icon);
-    const { url, title = "" } = resolvedImage || {};
+    const { url, title = '' } = resolvedImage || {};
     return url ? (
       <BaseImage
         src={url}
@@ -55,25 +54,20 @@ export const BaseHeroButton: FC<
         width={20}
         height={20}
         containerStyle={{
-          width: "20px",
-          height: "20px",
+          width: '20px',
+          height: '20px',
         }}
       />
     ) : undefined;
   };
   return (
     <BaseButton {...props} href={href} icon={<Icon />}>
-      <UniformText
-        placeholder="Button text goes here"
-        parameterId={parameterId}
-      />
+      <UniformText placeholder="Button text goes here" parameterId={parameterId} />
     </BaseButton>
   );
 };
 
-export const BaseHeroImage: FC<
-  BaseImageParameters & Omit<ComponentProps, "parameterId">
-> = ({
+export const BaseHeroImage: FC<BaseImageParameters & Omit<ComponentProps, 'parameterId'>> = ({
   component,
   isEditorPreviewMode,
   image,
@@ -91,7 +85,7 @@ export const BaseHeroImage: FC<
   const [resolvedImage] = resolveAsset(image);
 
   if (!resolvedImage) {
-    const isPlaceholder = component?._id?.includes("placeholder_");
+    const isPlaceholder = component?._id?.includes('placeholder_');
 
     if (!isEditorPreviewMode || isPlaceholder || !component.variant) {
       return null;
@@ -100,26 +94,23 @@ export const BaseHeroImage: FC<
     return (
       <div
         style={{
-          width: width ? `${width}px` : "auto",
-          height: height ? `${height}px` : "auto",
+          width: width ? `${width}px` : 'auto',
+          height: height ? `${height}px` : 'auto',
         }}
       >
-        <MediaPlaceholder
-          type="image"
-          placeholder="Please add an asset to display an image"
-        />
+        <MediaPlaceholder type="image" placeholder="Please add an asset to display an image" />
       </div>
     );
   }
 
-  const { focalPoint, title = "" } = resolvedImage;
+  const { focalPoint, title = '' } = resolvedImage;
 
   const imageWidth = width || resolvedImage.width;
   const imageHeight = height || resolvedImage.height;
 
   if (!fill && (!imageWidth || !imageHeight)) {
     console.warn(
-      "No dimensions provided for the Next.js Image component. Falling back to a standard <img> tag for rendering.",
+      'No dimensions provided for the Next.js Image component. Falling back to a standard <img> tag for rendering.'
     ); // eslint-disable-next-line @next/next/no-img-element
     return <img src={resolvedImage.url} alt={title} />;
   }

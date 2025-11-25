@@ -1,8 +1,8 @@
-import { FC } from "react";
-import BaseVideo from "@/components/ui/Video";
-import { resolveAsset } from "@/utils/assets";
-import { VideoProps } from ".";
-import { VideoPlaceholder } from "./placeholder";
+import { FC } from 'react';
+import BaseVideo from '@/components/ui/Video';
+import { resolveAsset } from '@/utils/assets';
+import { VideoProps } from '.';
+import { VideoPlaceholder } from './placeholder';
 
 const Video: FC<VideoProps> = ({
   video,

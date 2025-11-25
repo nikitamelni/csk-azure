@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { cn, resolveViewPort } from "@/utils/styling";
-import { TextProps } from "./";
+import { FC } from 'react';
+import { cn, resolveViewPort } from '@/utils/styling';
+import { TextProps } from './';
 
 export const Text: FC<TextProps> = ({
   className,
@@ -8,8 +8,8 @@ export const Text: FC<TextProps> = ({
   color,
   weight,
   font,
-  transform = "",
-  decoration = "",
+  transform = '',
+  decoration = '',
   letterSpacing,
   alignment,
   children,
@@ -19,28 +19,22 @@ export const Text: FC<TextProps> = ({
     {
       [`text-${color}`]: !!color,
       [`font-${font}`]: !!font,
-      [resolveViewPort(size, "text-{value}")]: size,
+      [resolveViewPort(size, 'text-{value}')]: size,
       [`font-${weight}`]: !!weight,
       [`text-${alignment}`]: !!alignment,
       [transform]: !!transform,
       [decoration]: !!decoration,
       [`tracking-${letterSpacing}`]: !!letterSpacing,
-      [resolveViewPort(lineCountRestrictions, "line-clamp-{value}")]:
-        lineCountRestrictions,
+      [resolveViewPort(lineCountRestrictions, 'line-clamp-{value}')]: lineCountRestrictions,
     },
-    className,
+    className
   );
 
-  if (typeof children === "string") {
+  if (typeof children === 'string') {
     return <span className={baseStyles}>{children}</span>;
   }
 
   const childrenProps = (children.props || {}) as Record<string, string>;
 
-  return (
-    <children.type
-      {...childrenProps}
-      className={cn(baseStyles, childrenProps?.className)}
-    />
-  );
+  return <children.type {...childrenProps} className={cn(baseStyles, childrenProps?.className)} />;
 };

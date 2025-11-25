@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { UniformText } from "@uniformdev/canvas-react";
-import { TableDataCellProps } from ".";
+import { FC } from 'react';
+import { UniformText } from '@uniformdev/canvas-react';
+import { TableDataCellProps } from '.';
 
 const TableDataCell: FC<TableDataCellProps> = () => (
   <td>

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import BaseGrid from "@/components/ui/Grid";
-import { GridProps, GridSlots } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import BaseGrid from '@/components/ui/Grid';
+import { GridProps, GridSlots } from '.';
 
 const Grid: FC<GridProps> = ({
   columnsCount,

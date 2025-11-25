@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import BaseHeader from "@/components/custom-ui/Header";
-import { HeaderProps, HeaderSlots, HeaderVariants } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import BaseHeader from '@/components/custom-ui/Header';
+import { HeaderProps, HeaderSlots, HeaderVariants } from '.';
 
 const Header: FC<HeaderProps> = ({
   backgroundColor,
@@ -14,17 +14,9 @@ const Header: FC<HeaderProps> = ({
 }) => (
   <BaseHeader
     sticky={component.variant === HeaderVariants.Sticky}
-    leftSection={
-      <UniformSlot
-        name={HeaderSlots.HeaderLeftContent}
-        emptyPlaceholder={<div className="h-20 w-48" />}
-      />
-    }
+    leftSection={<UniformSlot name={HeaderSlots.HeaderLeftContent} emptyPlaceholder={<div className="h-20 w-48" />} />}
     rightSection={
-      <UniformSlot
-        name={HeaderSlots.HeaderRightContent}
-        emptyPlaceholder={<div className="h-20 w-48" />}
-      />
+      <UniformSlot name={HeaderSlots.HeaderRightContent} emptyPlaceholder={<div className="h-20 w-48" />} />
     }
     {...{
       backgroundColor,
@@ -35,10 +27,7 @@ const Header: FC<HeaderProps> = ({
       border,
     }}
   >
-    <UniformSlot
-      name={HeaderSlots.HeaderCenterContent}
-      emptyPlaceholder={<div className="h-20 w-full" />}
-    />
+    <UniformSlot name={HeaderSlots.HeaderCenterContent} emptyPlaceholder={<div className="h-20 w-full" />} />
   </BaseHeader>
 );
 

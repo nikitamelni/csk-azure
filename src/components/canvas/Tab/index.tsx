@@ -1,11 +1,11 @@
-import { ComponentProps } from "@uniformdev/canvas-react";
+import { ComponentProps } from '@uniformdev/canvas-react';
 
 export type TabParameters = { title?: string };
 
 export enum TabSlots {
-  TabContent = "tabContent",
+  TabContent = 'tabContent',
 }
 
 export type TabProps = ComponentProps<TabParameters>;
 
-export { default } from "./tab";
+export { default } from './tab';

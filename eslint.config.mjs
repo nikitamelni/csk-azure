@@ -1,7 +1,7 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,59 +13,47 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: [
-      "next/core-web-vitals",
-      "next/typescript",
-      "prettier",
-      "plugin:@next/next/recommended",
-    ],
-    plugins: ["prettier"],
-    ignorePatterns: ["next-env.d.ts"],
+    extends: ['next/core-web-vitals', 'next/typescript', 'prettier', 'plugin:@next/next/recommended'],
+    plugins: ['prettier'],
+    ignorePatterns: ['next-env.d.ts'],
     rules: {
-      "no-console": ["error", { allow: ["info", "warn", "error"] }],
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "_", varsIgnorePattern: "_" },
-      ],
-      "prettier/prettier": "error",
-      "import/order": [
-        "error",
+      'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '_', varsIgnorePattern: '_' }],
+      'prettier/prettier': 'error',
+      'import/order': [
+        'error',
         {
-          groups: [
-            ["builtin", "external"],
-            "internal",
-            ["parent", "sibling", "index"],
-          ],
+          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
           pathGroups: [
             {
-              pattern: "@uniformdev/**",
-              group: "internal",
-              position: "before",
+              pattern: '@uniformdev/**',
+              group: 'internal',
+              position: 'before',
             },
             {
-              pattern: "@**/**",
-              group: "internal",
-              position: "before",
+              pattern: '@**/**',
+              group: 'internal',
+              position: 'before',
             },
             {
-              pattern: "react",
-              group: "builtin",
-              position: "before",
+              pattern: 'react',
+              group: 'builtin',
+              position: 'before',
             },
             {
-              pattern: "next",
-              group: "builtin",
-              position: "before",
+              pattern: 'next',
+              group: 'builtin',
+              position: 'before',
             },
             {
-              pattern: "next**/**",
-              group: "builtin",
-              position: "before",
+              pattern: 'next**/**',
+              group: 'builtin',
+              position: 'before',
             },
           ],
-          pathGroupsExcludedImportTypes: ["builtin"],
+          pathGroupsExcludedImportTypes: ['builtin'],
           alphabetize: {
-            order: "asc",
+            order: 'asc',
             caseInsensitive: true,
           },
         },

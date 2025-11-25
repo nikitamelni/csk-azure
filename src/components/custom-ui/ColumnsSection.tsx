@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { SpaceType, ViewPort } from "@uniformdev/csk-components/types/cskTypes";
-import { cn } from "@/utils/styling";
-import Container from "../ui/Container";
+import { FC } from 'react';
+import { SpaceType, ViewPort } from '@uniformdev/csk-components/types/cskTypes';
+import { cn } from '@/utils/styling';
+import Container from '../ui/Container';
 
 type ColumnsSectionProps = {
   leftColumnContent: React.ReactNode;
@@ -28,21 +28,19 @@ const ColumnsSection: FC<ColumnsSectionProps> = ({
         backgroundColor={leftColumnBackground}
         spacing={leftColumnSpacing}
         className={cn(
-          "fixed w-[30%] min-w-[360px] max-w-[568px] lg:min-w-[568px] h-screen flex justify-center items-center",
+          'fixed w-[30%] min-w-[360px] max-w-[568px] lg:min-w-[568px] h-screen flex justify-center items-center'
         )}
       >
-        <div className="w-full basis-full relative flex flex-col justify-end h-full">
-          {leftColumnContent}
-        </div>
+        <div className="w-full basis-full relative flex flex-col justify-end h-full">{leftColumnContent}</div>
       </Container>
       <Container
         fluidContent
         backgroundColor={rightColumnBackground}
         spacing={rightColumnSpacing}
         wrapperClassName={cn(
-          "left-[360px] lg:left-[568px] w-full max-w-[70%] lg:max-w-[calc(100%-568px)] min-h-screen h-auto relative flex items-start",
+          'left-[360px] lg:left-[568px] w-full max-w-[70%] lg:max-w-[calc(100%-568px)] min-h-screen h-auto relative flex items-start'
         )}
-        className={cn("w-full h-full")}
+        className={cn('w-full h-full')}
       >
         {rightColumnContent}
       </Container>

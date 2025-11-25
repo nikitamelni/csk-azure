@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import BaseCarousel from "@/components/ui/Carousel";
-import { CarouselProps, CarouselSlots } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import BaseCarousel from '@/components/ui/Carousel';
+import { CarouselProps, CarouselSlots } from '.';
 
 const Carousel: FC<CarouselProps> = ({
   backgroundColor,

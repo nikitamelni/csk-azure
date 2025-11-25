@@ -1,29 +1,15 @@
-import { FC, useState, useEffect, useMemo } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import { CountdownProps, CountdownSlots, CountdownVariants } from ".";
-import { CountdownUnit } from "./constants";
-import { getTextClass, getUnitClass } from "./style-utils";
-import { formatTime, renderNumberList } from "./utils";
+import { FC, useState, useEffect, useMemo } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import { CountdownProps, CountdownSlots, CountdownVariants } from '.';
+import { CountdownUnit } from './constants';
+import { getTextClass, getUnitClass } from './style-utils';
+import { formatTime, renderNumberList } from './utils';
 
-const UNITS_TO_SHOW = [
-  CountdownUnit.Days,
-  CountdownUnit.Hours,
-  CountdownUnit.Minutes,
-  CountdownUnit.Seconds,
-];
+const UNITS_TO_SHOW = [CountdownUnit.Days, CountdownUnit.Hours, CountdownUnit.Minutes, CountdownUnit.Seconds];
 
-const Countdown: FC<CountdownProps> = ({
-  targetDate,
-  backgroundColor,
-  textColor,
-  border,
-  size,
-  component,
-}) => {
+const Countdown: FC<CountdownProps> = ({ targetDate, backgroundColor, textColor, border, size, component }) => {
   const variant = component.variant as CountdownVariants;
-  const [{ timeDifference, ...time }, setTime] = useState(
-    formatTime(targetDate),
-  );
+  const [{ timeDifference, ...time }, setTime] = useState(formatTime(targetDate));
 
   const memoizedMaxUnitsCount = useMemo(() => {
     const { days } = formatTime(targetDate);
@@ -50,7 +36,7 @@ const Countdown: FC<CountdownProps> = ({
     <div>
       {timeDifference ? (
         <div className={getTextClass({ textColor })}>
-          {UNITS_TO_SHOW.map((unit) => {
+          {UNITS_TO_SHOW.map(unit => {
             if (time[unit] === 0 && unit === CountdownUnit.Days) return null;
 
             const currentTime = time[unit];
@@ -73,7 +59,7 @@ const Countdown: FC<CountdownProps> = ({
                     isAlignEnd: !border,
                   })}
                 </div>
-                <div className="mx-auto" style={{ fontSize: "0.5em" }}>
+                <div className="mx-auto" style={{ fontSize: '0.5em' }}>
                   {unit}
                 </div>
               </div>
@@ -81,10 +67,7 @@ const Countdown: FC<CountdownProps> = ({
           })}
         </div>
       ) : (
-        <UniformSlot
-          name={CountdownSlots.CountdownComplete}
-          emptyPlaceholder={null}
-        />
+        <UniformSlot name={CountdownSlots.CountdownComplete} emptyPlaceholder={null} />
       )}
     </div>
   );

@@ -1,8 +1,8 @@
-import { FC } from "react";
-import BaseContainer from "@/components/ui/Container";
-import { ViewPort } from "@/types/cskTypes";
-import { SpaceType } from "@/types/cskTypes";
-import { HeaderProps } from "./";
+import { FC } from 'react';
+import BaseContainer from '@/components/ui/Container';
+import { ViewPort } from '@/types/cskTypes';
+import { SpaceType } from '@/types/cskTypes';
+import { HeaderProps } from './';
 
 export const DesktopHeader: FC<HeaderProps> = ({
   leftSection,
@@ -23,24 +23,24 @@ export const DesktopHeader: FC<HeaderProps> = ({
           spacing: {
             mobile: {
               ...(spacing as ViewPort<SpaceType>)?.mobile,
-              marginTop: "0",
-              marginBottom: "0",
-              paddingTop: "0",
-              paddingBottom: "0",
+              marginTop: '0',
+              marginBottom: '0',
+              paddingTop: '0',
+              paddingBottom: '0',
             },
             tablet: {
               ...(spacing as ViewPort<SpaceType>)?.tablet,
-              marginTop: "0",
-              marginBottom: "0",
-              paddingTop: "0",
-              paddingBottom: "0",
+              marginTop: '0',
+              marginBottom: '0',
+              paddingTop: '0',
+              paddingBottom: '0',
             },
             desktop: {
               ...(spacing as ViewPort<SpaceType>)?.desktop,
-              marginTop: "0",
-              marginBottom: "0",
-              paddingTop: "0",
-              paddingBottom: "0",
+              marginTop: '0',
+              marginBottom: '0',
+              paddingTop: '0',
+              paddingBottom: '0',
             },
           },
         }}
@@ -51,24 +51,24 @@ export const DesktopHeader: FC<HeaderProps> = ({
             spacing={{
               mobile: {
                 ...(spacing as ViewPort<SpaceType>)?.mobile,
-                marginLeft: "0",
-                marginRight: "0",
-                paddingLeft: "0",
-                paddingRight: "0",
+                marginLeft: '0',
+                marginRight: '0',
+                paddingLeft: '0',
+                paddingRight: '0',
               },
               tablet: {
                 ...(spacing as ViewPort<SpaceType>)?.tablet,
-                marginLeft: "0",
-                marginRight: "0",
-                paddingLeft: "0",
-                paddingRight: "0",
+                marginLeft: '0',
+                marginRight: '0',
+                paddingLeft: '0',
+                paddingRight: '0',
               },
               desktop: {
                 ...(spacing as ViewPort<SpaceType>)?.desktop,
-                marginLeft: "0",
-                marginRight: "0",
-                paddingLeft: "0",
-                paddingRight: "0",
+                marginLeft: '0',
+                marginRight: '0',
+                paddingLeft: '0',
+                paddingRight: '0',
               },
             }}
             wrapperClassName="w-[30%] min-w-[360px] max-w-[568px] lg:min-w-[568px]"
@@ -83,24 +83,24 @@ export const DesktopHeader: FC<HeaderProps> = ({
           spacing={{
             mobile: {
               ...(spacing as ViewPort<SpaceType>)?.mobile,
-              marginLeft: "0",
-              marginRight: "0",
-              paddingLeft: "0",
-              paddingRight: "0",
+              marginLeft: '0',
+              marginRight: '0',
+              paddingLeft: '0',
+              paddingRight: '0',
             },
             tablet: {
               ...(spacing as ViewPort<SpaceType>)?.tablet,
-              marginLeft: "0",
-              marginRight: "0",
-              paddingLeft: "0",
-              paddingRight: "0",
+              marginLeft: '0',
+              marginRight: '0',
+              paddingLeft: '0',
+              paddingRight: '0',
             },
             desktop: {
               ...(spacing as ViewPort<SpaceType>)?.desktop,
-              marginLeft: "0",
-              marginRight: "0",
-              paddingLeft: "0",
-              paddingRight: "0",
+              marginLeft: '0',
+              marginRight: '0',
+              paddingLeft: '0',
+              paddingRight: '0',
             },
           }}
           wrapperClassName="w-full left-[30%] lg:left-[568px] w-full max-w-[70%] lg:max-w-[calc(100%-568px)]"

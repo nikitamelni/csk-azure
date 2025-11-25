@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformText } from "@uniformdev/canvas-react";
-import BaseText from "@/components/ui/Text";
-import { TextProps } from ".";
+import { FC } from 'react';
+import { UniformText } from '@uniformdev/canvas-react';
+import BaseText from '@/components/ui/Text';
+import { TextProps } from '.';
 
 const Text: FC<TextProps> = ({
   tag,
@@ -28,11 +28,7 @@ const Text: FC<TextProps> = ({
       lineCountRestrictions,
     }}
   >
-    <UniformText
-      placeholder="Text goes here"
-      parameterId="text"
-      as={tag || undefined}
-    />
+    <UniformText placeholder="Text goes here" parameterId="text" as={tag || undefined} />
   </BaseText>
 );
 

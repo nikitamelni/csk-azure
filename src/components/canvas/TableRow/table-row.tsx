@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import { TableRowProps, TableRowSlots } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import { TableRowProps, TableRowSlots } from '.';
 
 const TableRow: FC<TableRowProps> = () => (
   <tr>

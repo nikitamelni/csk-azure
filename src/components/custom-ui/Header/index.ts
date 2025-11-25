@@ -1,8 +1,8 @@
-import { PropsWithChildren, ReactNode } from "react";
-import { ContainerProps as BaseContainerProps } from "@/components/ui/Container";
+import { PropsWithChildren, ReactNode } from 'react';
+import { ContainerProps as BaseContainerProps } from '@/components/ui/Container';
 
 export type HeaderProps = PropsWithChildren &
-  Omit<BaseContainerProps, "fluidContent" | "height"> & {
+  Omit<BaseContainerProps, 'fluidContent' | 'height'> & {
     leftSection?: ReactNode;
     leftSectionBackgroundColor?: string;
     rightSectionBackgroundColor?: string;
@@ -11,4 +11,4 @@ export type HeaderProps = PropsWithChildren &
     sticky?: boolean;
   };
 
-export { Header as default } from "./header";
+export { Header as default } from './header';

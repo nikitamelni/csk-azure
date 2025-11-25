@@ -1,8 +1,5 @@
-import { ComponentType } from "react";
-import {
-  ComponentProps,
-  UniformSlotWrapperComponentProps,
-} from "@uniformdev/canvas-react";
+import { ComponentType } from 'react';
+import { ComponentProps, UniformSlotWrapperComponentProps } from '@uniformdev/canvas-react';
 
 export type PageAdditionalProps = {
   headerCustomRenderer?: ComponentType<UniformSlotWrapperComponentProps>;
@@ -16,11 +13,11 @@ export type PageParameters = {
 };
 
 export enum CommonPageSlots {
-  PageContent = "pageContent",
-  PageHeader = "pageHeader",
-  PageFooter = "pageFooter",
+  PageContent = 'pageContent',
+  PageHeader = 'pageHeader',
+  PageFooter = 'pageFooter',
 }
 
 export type PageProps = ComponentProps<PageParameters> & PageAdditionalProps;
 
-export { default } from "./page";
+export { default } from './page';

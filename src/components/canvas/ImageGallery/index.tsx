@@ -1,9 +1,9 @@
-import { AssetParamValue } from "@uniformdev/assets";
-import { ComponentProps } from "@uniformdev/canvas-react";
-import { ContainerParameters } from "@/components/canvas/Container/parameters";
+import { AssetParamValue } from '@uniformdev/assets';
+import { ComponentProps } from '@uniformdev/canvas-react';
+import { ContainerParameters } from '@/components/canvas/Container/parameters';
 
 export type ImageGalleryParameters = ContainerParameters & {
-  aspectRatio?: "square" | "video";
+  aspectRatio?: 'square' | 'video';
   items?: AssetParamValue;
 };
 
@@ -16,10 +16,9 @@ export type ImageGalleryAdditionalProps = {
 };
 
 export enum ImageGallerySlots {
-  Items = "imageGalleryItems",
+  Items = 'imageGalleryItems',
 }
 
-export type ImageGalleryProps = ComponentProps<ImageGalleryParameters> &
-  ImageGalleryAdditionalProps;
+export type ImageGalleryProps = ComponentProps<ImageGalleryParameters> & ImageGalleryAdditionalProps;
 
-export { default } from "./image-gallery";
+export { default } from './image-gallery';

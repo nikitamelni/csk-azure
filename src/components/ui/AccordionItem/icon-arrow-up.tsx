@@ -1,9 +1,6 @@
-import { FC, SVGProps } from "react";
+import { FC, SVGProps } from 'react';
 
-export const IconArrowUp: FC<SVGProps<SVGSVGElement>> = ({
-  className,
-  ...restProps
-}) => (
+export const IconArrowUp: FC<SVGProps<SVGSVGElement>> = ({ className, ...restProps }) => (
   <svg
     className={className}
     width="15"

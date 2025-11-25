@@ -1,9 +1,9 @@
-import { FC, SVGProps, HTMLAttributes } from "react";
-import { cn } from "@/utils/styling";
+import { FC, SVGProps, HTMLAttributes } from 'react';
+import { cn } from '@/utils/styling';
 
 const PlayIcon: FC<SVGProps<SVGSVGElement>> = ({ className, ...restProps }) => (
   <svg
-    className={cn("size-full", className)}
+    className={cn('size-full', className)}
     viewBox="0 0 123 123"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +19,7 @@ const PlayIcon: FC<SVGProps<SVGSVGElement>> = ({ className, ...restProps }) => (
   </svg>
 );
 
-export const PlayButton: FC<HTMLAttributes<HTMLButtonElement>> = ({
-  onClick,
-}) => (
+export const PlayButton: FC<HTMLAttributes<HTMLButtonElement>> = ({ onClick }) => (
   <button
     className="absolute left-1/2 top-1/2 w-1/5 -translate-x-1/2 -translate-y-1/2 transition hover:scale-90"
     type="button"

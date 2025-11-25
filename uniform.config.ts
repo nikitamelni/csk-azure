@@ -1,10 +1,10 @@
-import { uniformConfig } from "@uniformdev/cli/config";
+import { uniformConfig } from '@uniformdev/cli/config';
 
 module.exports = uniformConfig({
-  preset: "all",
+  preset: 'all',
   overrides: {
-    serializationConfig: { directory: "./content" },
+    serializationConfig: { directory: './content' },
   },
   // you can disable specific entities from being included, which can speed up your sync
-  disableEntities: ["webhook"],
+  disableEntities: ['webhook'],
 });

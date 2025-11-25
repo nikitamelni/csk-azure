@@ -1,6 +1,6 @@
-import { FC, SVGProps, useEffect, useState } from "react";
-import { cn } from "@/utils/styling";
-import { InlineSVGProps } from ".";
+import { FC, SVGProps, useEffect, useState } from 'react';
+import { cn } from '@/utils/styling';
+import { InlineSVGProps } from '.';
 import {
   fetchSvg,
   sanitizeSvg,
@@ -8,11 +8,11 @@ import {
   getSvgAttributes,
   getSvgInnerContent,
   convertSvgAttributesToReactProps,
-} from "./utils";
+} from './utils';
 
 export const InlineSVG: FC<InlineSVGProps> = ({
   src,
-  className = "",
+  className = '',
   width,
   height,
   fill,
@@ -50,13 +50,13 @@ export const InlineSVG: FC<InlineSVGProps> = ({
 
     const svgProps: SVGProps<SVGSVGElement> = {
       ...reactProps,
-      role: "img",
-      "aria-label": alt,
+      role: 'img',
+      'aria-label': alt,
       focusable: false,
-      width: fill ? "100%" : width,
-      height: fill ? "100%" : height,
+      width: fill ? '100%' : width,
+      height: fill ? '100%' : height,
       className: cn(reactProps.className, className, {
-        "absolute inset-0": fill,
+        'absolute inset-0': fill,
       }),
     };
 
@@ -69,9 +69,7 @@ export const InlineSVG: FC<InlineSVGProps> = ({
     return (
       fallback ?? (
         <div className={cn(className)} style={{ width, height }}>
-          <div className="rounded border border-red-200 bg-red-50 p-2 text-sm text-red-500">
-            Failed to load SVG
-          </div>
+          <div className="rounded border border-red-200 bg-red-50 p-2 text-sm text-red-500">Failed to load SVG</div>
         </div>
       )
     );

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import BaseFlex from "@/components/ui/Flex";
-import { FlexProps, FlexSlots } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import BaseFlex from '@/components/ui/Flex';
+import { FlexProps, FlexSlots } from '.';
 
 const Flex: FC<FlexProps> = ({
   direction,

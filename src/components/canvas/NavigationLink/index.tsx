@@ -1,8 +1,8 @@
-import { AssetParamValue } from "@uniformdev/assets";
-import { LinkParamValue } from "@uniformdev/canvas";
-import { ComponentProps } from "@uniformdev/canvas-react";
-import { TextParameters } from "@/components/canvas/Text/parameters";
-import { ViewPort } from "@/types/cskTypes";
+import { AssetParamValue } from '@uniformdev/assets';
+import { LinkParamValue } from '@uniformdev/canvas';
+import { ComponentProps } from '@uniformdev/canvas-react';
+import { TextParameters } from '@/components/canvas/Text/parameters';
+import { ViewPort } from '@/types/cskTypes';
 
 export type NavigationLinkParameters = TextParameters & {
   icon?: AssetParamValue;
@@ -14,4 +14,4 @@ export type NavigationLinkParameters = TextParameters & {
 
 export type NavigationLinkProps = ComponentProps<NavigationLinkParameters>;
 
-export { default } from "./navigation-link";
+export { default } from './navigation-link';

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UniformSlot } from "@uniformdev/canvas-react";
-import BaseContainer from "@/components/ui/Container";
-import { ContainerProps, ContainerSlots } from ".";
+import { FC } from 'react';
+import { UniformSlot } from '@uniformdev/canvas-react';
+import BaseContainer from '@/components/ui/Container';
+import { ContainerProps, ContainerSlots } from '.';
 
 const Container: FC<ContainerProps> = ({
   displayName,

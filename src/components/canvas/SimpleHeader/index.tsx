@@ -1,9 +1,5 @@
-import {
-  AssetParamValue,
-  DataWithProperties,
-  LinkParamValue,
-} from "@uniformdev/canvas";
-import { ComponentProps } from "@uniformdev/canvas-react";
+import { AssetParamValue, DataWithProperties, LinkParamValue } from '@uniformdev/canvas';
+import { ComponentProps } from '@uniformdev/canvas-react';
 
 export type SimpleHeaderParameters = {
   logo?: AssetParamValue;
@@ -15,7 +11,7 @@ export type SimpleHeaderParameters = {
 };
 
 export enum SimpleHeaderVariants {
-  Sticky = "sticky",
+  Sticky = 'sticky',
 }
 
 export type HeaderLink = {
@@ -25,4 +21,4 @@ export type HeaderLink = {
 
 export type SimpleHeaderProps = ComponentProps<SimpleHeaderParameters>;
 
-export { default } from "./simple-header";
+export { default } from './simple-header';

@@ -1,20 +1,15 @@
-import { FC } from "react";
-import { cn } from "@/utils/styling";
-import { RatingProps } from ".";
+import { FC } from 'react';
+import { cn } from '@/utils/styling';
+import { RatingProps } from '.';
 
-export const Rating: FC<RatingProps> = ({
-  rating,
-  showReviewLabel,
-  starsColor,
-  activeStarsColor,
-}) => (
+export const Rating: FC<RatingProps> = ({ rating, showReviewLabel, starsColor, activeStarsColor }) => (
   <div className="flex items-center space-x-1">
     {Array.from({ length: 5 }, (_, starIndex) => {
       const selectedRating = rating && rating >= starIndex + 1;
       return (
         <svg
           key={starIndex}
-          className={cn("w-5 h-5", {
+          className={cn('w-5 h-5', {
             [`fill-${starsColor}`]: !selectedRating,
             [`fill-${activeStarsColor}`]: selectedRating,
           })}
@@ -27,8 +22,6 @@ export const Rating: FC<RatingProps> = ({
         </svg>
       );
     })}
-    {showReviewLabel && (
-      <div className="text-sm leading-[3px]">({rating}/5)</div>
-    )}
+    {showReviewLabel && <div className="text-sm leading-[3px]">({rating}/5)</div>}
   </div>
 );

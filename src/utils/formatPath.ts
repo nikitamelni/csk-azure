@@ -1,4 +1,4 @@
-import i18n from "@/i18n/locales.json";
+import i18n from '@/i18n/locales.json';
 
 /**
  * Checks if a given path includes a locale defined in the localization configuration.
@@ -7,10 +7,8 @@ import i18n from "@/i18n/locales.json";
  * @returns {boolean} True if the first segment of the path matches one of the configured locales; otherwise, false.
  */
 const isLocaleInPath = (path: string): boolean => {
-  const [firstSegment] = path.split("/").filter(Boolean);
-  return firstSegment
-    ? (i18n.locales as string[]).some((locale) => locale === firstSegment)
-    : false;
+  const [firstSegment] = path.split('/').filter(Boolean);
+  return firstSegment ? (i18n.locales as string[]).some(locale => locale === firstSegment) : false;
 };
 
 /**

@@ -1,12 +1,12 @@
-import { ComponentProps } from "@uniformdev/canvas-react";
-import { ContainerParameters } from "@/components/canvas/Container/parameters";
-import { ViewPort } from "@/types/cskTypes";
+import { ComponentProps } from '@uniformdev/canvas-react';
+import { ContainerParameters } from '@/components/canvas/Container/parameters';
+import { ViewPort } from '@/types/cskTypes';
 
-type Direction = "row" | "row-reverse" | "col" | "col-reverse";
-type Justify = "start" | "end" | "center" | "between";
-type AvailableGap = "2" | "8" | "16";
-type Align = "start" | "end" | "center" | "stretch";
-type Wrap = "nowrap" | "wrap" | "wrap-reverse";
+type Direction = 'row' | 'row-reverse' | 'col' | 'col-reverse';
+type Justify = 'start' | 'end' | 'center' | 'between';
+type AvailableGap = '2' | '8' | '16';
+type Align = 'start' | 'end' | 'center' | 'stretch';
+type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 
 export type FlexAdditionalProps = {
   className?: string;
@@ -22,9 +22,9 @@ export type FlexParameters = ContainerParameters & {
 };
 
 export enum FlexSlots {
-  FlexItem = "flexItem",
+  FlexItem = 'flexItem',
 }
 
 export type FlexProps = ComponentProps<FlexParameters> & FlexAdditionalProps;
 
-export { default } from "./flex";
+export { default } from './flex';

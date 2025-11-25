@@ -1,32 +1,20 @@
-import { FC, useMemo } from "react";
-import { LinkParamValue, flattenValues } from "@uniformdev/canvas";
-import {
-  useUniformContextualEditingState,
-  useUniformCurrentComposition,
-} from "@uniformdev/canvas-react";
-import BaseButton, { ButtonVariant } from "@/components/ui/Button";
-import BaseText from "@/components/ui/Text";
-import { formatUniformLink } from "@/utils/routing";
-import { cn } from "@/utils/styling";
-import { BreadcrumbLink, BreadcrumbsProps, useBreadcrumbsContext } from ".";
-import { getSeparator } from "./helpers";
+import { FC, useMemo } from 'react';
+import { LinkParamValue, flattenValues } from '@uniformdev/canvas';
+import { useUniformContextualEditingState, useUniformCurrentComposition } from '@uniformdev/canvas-react';
+import BaseButton, { ButtonVariant } from '@/components/ui/Button';
+import BaseText from '@/components/ui/Text';
+import { formatUniformLink } from '@/utils/routing';
+import { cn } from '@/utils/styling';
+import { BreadcrumbLink, BreadcrumbsProps, useBreadcrumbsContext } from '.';
+import { getSeparator } from './helpers';
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({
-  separator,
-  links,
-  size,
-  color,
-  font,
-  transform,
-  autoGenerate,
-}) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({ separator, links, size, color, font, transform, autoGenerate }) => {
   // Matched route is 'composition' — this means we're in the composition pattern,
   // so we don't have access to the project map at this point.
   const { data } = useUniformCurrentComposition();
   const { previewMode } = useUniformContextualEditingState();
-  const isEditorPreviewMode =
-    previewMode === "editor" || previewMode === "preview";
-  const isInPattern = !data?.type || data?.type !== "page";
+  const isEditorPreviewMode = previewMode === 'editor' || previewMode === 'preview';
+  const isInPattern = !data?.type || data?.type !== 'page';
   const { breadcrumbs = [] } = useBreadcrumbsContext() || {};
 
   const getManualBreadcrumbs = useMemo(
@@ -43,7 +31,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
 
           return [...acc, { title, link: formatUniformLink(link) }];
         }, []) || [],
-    [links],
+    [links]
   );
 
   const itemToDisplay = autoGenerate ? breadcrumbs : getManualBreadcrumbs;
@@ -53,8 +41,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       <ul className="flex items-center">
         <li className="flex items-center">
           <BaseText size={size} font={font} color={color} transform={transform}>
-            Breadcrumbs cannot be auto-generated because the project map is not
-            accessible in this context.
+            Breadcrumbs cannot be auto-generated because the project map is not accessible in this context.
           </BaseText>
         </li>
       </ul>
@@ -66,8 +53,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       <ul className="flex items-center">
         <li className="flex items-center">
           <BaseText size={size} font={font} color={color} transform={transform}>
-            Auto-generated breadcrumbs is hidden in contextual editing and
-            preview mode.
+            Auto-generated breadcrumbs is hidden in contextual editing and preview mode.
           </BaseText>
         </li>
       </ul>
@@ -81,23 +67,16 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
 
   return (
     <ul
-      className={cn("flex items-center", {
+      className={cn('flex items-center', {
         [`text-${size}`]: !!size,
         [`text-${color}`]: !!color,
       })}
     >
       {itemToDisplay.map(({ title, link }, index) => (
         <li className="flex items-center" key={`${title}-${index}`}>
-          {!!index && (
-            <div className="mx-2 size-[1em]">{getSeparator(separator)}</div>
-          )}
+          {!!index && <div className="mx-2 size-[1em]">{getSeparator(separator)}</div>}
           {!link ? (
-            <BaseText
-              size={size}
-              font={font}
-              color={color}
-              transform={transform}
-            >
+            <BaseText size={size} font={font} color={color} transform={transform}>
               {title}
             </BaseText>
           ) : (
@@ -107,7 +86,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
               className={cn({
                 [`font-${font}`]: !!font,
                 [`text-${size}`]: !!size,
-                [transform || ""]: !!transform,
+                [transform || '']: !!transform,
               })}
               href={link}
             >

@@ -1,10 +1,4 @@
-import {
-  FC,
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-} from "react";
+import { FC, PropsWithChildren, createContext, useContext, useMemo } from 'react';
 
 type BreadcrumbsContextProps = {
   breadcrumbs?: { title: string; link: string | null }[];
@@ -16,11 +10,7 @@ export const BreadcrumbsContext = createContext<BreadcrumbsContextProps>({});
 
 const BreadcrumbsContextProvider: FC<Props> = ({ children, ...rest }) => {
   const value = useMemo(() => ({ ...rest }), [rest]);
-  return (
-    <BreadcrumbsContext.Provider value={value}>
-      {children}
-    </BreadcrumbsContext.Provider>
-  );
+  return <BreadcrumbsContext.Provider value={value}>{children}</BreadcrumbsContext.Provider>;
 };
 
 export default BreadcrumbsContextProvider;

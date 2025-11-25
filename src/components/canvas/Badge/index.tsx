@@ -1,4 +1,4 @@
-import { ComponentProps } from "@uniformdev/canvas-react";
+import { ComponentProps } from '@uniformdev/canvas-react';
 
 export type BadgeParameters = {
   text?: string;
@@ -12,4 +12,4 @@ export type BadgeParameters = {
 
 export type BadgeProps = ComponentProps<BadgeParameters>;
 
-export { default } from "./badge";
+export { default } from './badge';
