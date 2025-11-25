@@ -1,9 +1,4 @@
-trigger:
-  branches:
-    include:
-      - main   # or your default branch
-
-# If you're using GitHub as the repo, this is fine as-is in Azure DevOps
+trigger: none
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -12,13 +7,15 @@ variables:
   # These should be defined in the pipeline Library/Variables (as secrets) or directly in the pipeline UI.
   # UNIFORM_API_KEY: <set in pipeline/variable group as secret>
   # UNIFORM_PROJECT_ID: <set in pipeline/variable group as secret>
+  RESOURCE_GROUP: 'dev-nikitam-eastus-rg'
+  APP_NAME: 'pfg-preview-app'
   RUNNING_MODE: 'preview'
 
 steps:
   - task: NodeTool@0
-    displayName: 'Use Node.js 20.x'
+    displayName: 'Use Node.js 22.x'
     inputs:
-      versionSpec: '20.x'
+      versionSpec: '22.x'
 
   - script: |
       node -v
@@ -38,14 +35,6 @@ steps:
       UNIFORM_PROJECT_ID: $(UNIFORM_PROJECT_ID)
       RUNNING_MODE: $(RUNNING_MODE)
 
-  # If you need to run tests, add them here before deployment:
-  # - script: |
-  #     npm test
-  #   displayName: 'Run tests'
-
-  # Package the app if needed; for App Service on Linux with Node, we can just deploy the repo folder
-  # including .next, node_modules (or use "npm ci --omit=dev" during build step), etc.
-
   - task: ArchiveFiles@2
     displayName: 'Archive build for deployment'
     inputs:
@@ -59,11 +48,10 @@ steps:
     displayName: 'Publish build artifact'
     artifact: 'drop'
 
-  # Deploy to Azure Web App for Linux (Node 20)
   - task: AzureWebApp@1
     displayName: 'Deploy to Azure Web App'
     inputs:
-      azureSubscription: 'dev-nikitam-eastus-rg'  # e.g. 'My Azure Service Connection'
-      appName: 'pfg-preview-app'                         # e.g. 'my-nextjs-app-service'
+      azureSubscription: $(RESOURCE_GROUP)
+      appName: $(APP_NAME)
       package: '$(Build.ArtifactStagingDirectory)/drop.zip'
-      runtimeStack: 'NODE|20-lts'
+      runtimeStack: 'NODE|22-lts'
